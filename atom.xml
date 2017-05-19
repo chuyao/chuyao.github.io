@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-05-16T09:31:43.177Z</updated>
+  <updated>2017-05-19T05:48:33.228Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown语法测试</title>
+    <link href="https://chuyao.github.io/2017/05/19/markdown-test/"/>
+    <id>https://chuyao.github.io/2017/05/19/markdown-test/</id>
+    <published>2017-05-19T05:40:13.000Z</published>
+    <updated>2017-05-19T05:48:33.228Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Java语法高亮显示"><a href="#Java语法高亮显示" class="headerlink" title="Java语法高亮显示"></a>Java语法高亮显示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java语法高亮显示&quot;&gt;&lt;a href=&quot;#Java语法高亮显示&quot; class=&quot;headerlink&quot; title=&quot;Java语法高亮显示&quot;&gt;&lt;/a&gt;Java语法高亮显示&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chuyao.github.io/tags/Tech/"/>
+    
+      <category term="Markdown" scheme="https://chuyao.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>致我的爱</title>
