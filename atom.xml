@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-05-19T06:07:38.334Z</updated>
+  <updated>2017-06-24T07:29:43.270Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>testTextWithImage</title>
+    <link href="https://chuyao.github.io/2017/06/24/testTextWithImage/"/>
+    <id>https://chuyao.github.io/2017/06/24/testTextWithImage/</id>
+    <published>2017-06-24T07:14:33.000Z</published>
+    <updated>2017-06-24T07:29:43.270Z</updated>
+    
+    <content type="html"><![CDATA[<p>###听说这样可以图文并茂###</p>
+<p>这是一段文字，当这段文字出现的时候，会伴随着图片，你看到了吗？<br>这是传说中的相对路径方式<br><img src="/2017/06/24/testTextWithImage/2017/06/24/testTextWithImage/test.jpg" alt="This is an example image" title="This is an example image"><br>下面是markdown方式<br><img src="/2017/06/24/testTextWithImage/images/test.jpg" alt=""><br>好了，真的都有看到吗？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###听说这样可以图文并茂###&lt;/p&gt;
+&lt;p&gt;这是一段文字，当这段文字出现的时候，会伴随着图片，你看到了吗？&lt;br&gt;这是传说中的相对路径方式&lt;br&gt;&lt;img src=&quot;/2017/06/24/testTextWithImage/2017/06/24/testTextWit
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Hexo" scheme="https://chuyao.github.io/tags/Hexo/"/>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/tags/Tech/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown语法测试</title>
