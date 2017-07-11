@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo博客搭建 | Allen&#39;s Blog</title>
+  <title>一个简单的Node.js服务器 | Allen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="伴随着Node.js的兴起，hexo博客框架如今发展迅猛，作为一个开源框架，深受各技术同行们的欢迎，在github上的start数已超16K，本文以本人搭建博客及写作历程，将记录一些相关过程，有时间会更新并分享，尽量多些干货。 Hexo绑定Github">
-<meta name="keywords" content="Hexo,Github">
+  <meta name="description" content="先来看个官方Hello World，几行代码即可搭建一个服务器。1234567891011121314const http = require(&apos;http&apos;);const hostname = &apos;127.0.0.1&apos;;const port = 3000;const server = http.createServer((req, res) =&amp;gt; &amp;#123;  res.statusCode">
+<meta name="keywords" content="Tech,Node.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客搭建">
-<meta property="og:url" content="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/index.html">
+<meta property="og:title" content="一个简单的Node.js服务器">
+<meta property="og:url" content="https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
-<meta property="og:description" content="伴随着Node.js的兴起，hexo博客框架如今发展迅猛，作为一个开源框架，深受各技术同行们的欢迎，在github上的start数已超16K，本文以本人搭建博客及写作历程，将记录一些相关过程，有时间会更新并分享，尽量多些干货。 Hexo绑定Github">
-<meta property="og:updated_time" content="2017-07-06T00:59:56.514Z">
+<meta property="og:description" content="先来看个官方Hello World，几行代码即可搭建一个服务器。1234567891011121314const http = require(&apos;http&apos;);const hostname = &apos;127.0.0.1&apos;;const port = 3000;const server = http.createServer((req, res) =&amp;gt; &amp;#123;  res.statusCode">
+<meta property="og:updated_time" content="2017-07-11T09:45:35.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo博客搭建">
-<meta name="twitter:description" content="伴随着Node.js的兴起，hexo博客框架如今发展迅猛，作为一个开源框架，深受各技术同行们的欢迎，在github上的start数已超16K，本文以本人搭建博客及写作历程，将记录一些相关过程，有时间会更新并分享，尽量多些干货。 Hexo绑定Github">
+<meta name="twitter:title" content="一个简单的Node.js服务器">
+<meta name="twitter:description" content="先来看个官方Hello World，几行代码即可搭建一个服务器。1234567891011121314const http = require(&apos;http&apos;);const hostname = &apos;127.0.0.1&apos;;const port = 3000;const server = http.createServer((req, res) =&amp;gt; &amp;#123;  res.statusCode">
   
     <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-build-a-hexo-blog" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-simple-server-with-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/10/build-a-hexo-blog/" class="article-date">
-  <time datetime="2017-05-09T16:48:29.000Z" itemprop="datePublished">2017-05-10</time>
+    <a href="/2017/07/11/simple-server-with-nodejs/" class="article-date">
+  <time datetime="2017-07-11T06:02:57.000Z" itemprop="datePublished">2017-07-11</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo博客搭建
+      一个简单的Node.js服务器
     </h1>
   
 
@@ -94,16 +94,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>伴随着Node.js的兴起，hexo博客框架如今发展迅猛，作为一个开源框架，深受各技术同行们的欢迎，在github上的start数已超16K，本文以本人搭建博客及写作历程，将记录一些相关过程，有时间会更新并分享，尽量多些干货。</p>
-<h5 id="Hexo绑定Github"><a href="#Hexo绑定Github" class="headerlink" title="Hexo绑定Github"></a>Hexo绑定Github</h5>
+        <p>先来看个<a href="https://nodejs.org/en/about/" target="_blank" rel="external">官方Hello World</a>，几行代码即可搭建一个服务器。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</div><div class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  res.statusCode = <span class="number">200</span>;</div><div class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>十分简洁，只要有点javascript语法知识，就能看懂。<br>当然，并不是所看到的那么简单，要让这几行代码“简单”起来，需要依赖于一个安装好的Node环境，关于Node环境安装，不想赘述太多，网上的教程一大堆，这里简单总结一下：</p>
+<ol>
+<li>Windows系统环境<br>下载<a href="https://nodejs.org/en/download/" target="_blank" rel="external">官方安装源</a>安装即可；</li>
+<li>Linux系统环境<br>推荐使用<a href="https://github.com/creationix/nvm/blob/master/README.md#install-script" target="_blank" rel="external">nvm</a>安装及管理node版本，当然，也可以访问上面提到的官方安装源，下载安装。</li>
+</ol>
+<p>请尽量安装使用LTS版本，经过上边的步骤，就可以如开头所说的，快速搭建一个简单服务器了。<br>下边进入正题，先说一个场景，一个客户端开发人员，需要对接口进行测试，需要接口假数据，真的会有一些开发人员说：“没有数据我开发不了！”，而碰巧后端同事又还没空开发接口、做假数据，怎么办？求人不如求己！具体到开发案例场景，客户端开发需要一个升级检查功能(一般包含两部分，版本检查，高版本文件下载)，针对这个场景，今天用node.js来实现解决方案。</p>
+
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/" data-id="cj4ze8fx60000v8uwef7fkq6u" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/" data-id="cj4ze8fxz0006v8uw3qptu9ac" class="article-share-link">分享</a>
        -->
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
 
     </footer>
   </div>
@@ -111,19 +117,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/05/16/tomylove/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">较新的</strong>
-      <div class="article-nav-title">
-        
-          致我的爱
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/06/the-disappearing-of-tradition/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">以前的</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">消失的传统</div>
     </a>
   
 </nav>

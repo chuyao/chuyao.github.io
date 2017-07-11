@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-07-10T05:56:29.094Z</updated>
+  <updated>2017-07-11T09:45:35.403Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个简单的Node.js服务器</title>
+    <link href="https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/"/>
+    <id>https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/</id>
+    <published>2017-07-11T06:02:57.000Z</published>
+    <updated>2017-07-11T09:45:35.403Z</updated>
+    
+    <content type="html"><![CDATA[<p>先来看个<a href="https://nodejs.org/en/about/" target="_blank" rel="external">官方Hello World</a>，几行代码即可搭建一个服务器。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</div><div class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  res.statusCode = <span class="number">200</span>;</div><div class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>十分简洁，只要有点javascript语法知识，就能看懂。<br>当然，并不是所看到的那么简单，要让这几行代码“简单”起来，需要依赖于一个安装好的Node环境，关于Node环境安装，不想赘述太多，网上的教程一大堆，这里简单总结一下：</p>
+<ol>
+<li>Windows系统环境<br>下载<a href="https://nodejs.org/en/download/" target="_blank" rel="external">官方安装源</a>安装即可；</li>
+<li>Linux系统环境<br>推荐使用<a href="https://github.com/creationix/nvm/blob/master/README.md#install-script" target="_blank" rel="external">nvm</a>安装及管理node版本，当然，也可以访问上面提到的官方安装源，下载安装。</li>
+</ol>
+<p>请尽量安装使用LTS版本，经过上边的步骤，就可以如开头所说的，快速搭建一个简单服务器了。<br>下边进入正题，先说一个场景，一个客户端开发人员，需要对接口进行测试，需要接口假数据，真的会有一些开发人员说：“没有数据我开发不了！”，而碰巧后端同事又还没空开发接口、做假数据，怎么办？求人不如求己！具体到开发案例场景，客户端开发需要一个升级检查功能(一般包含两部分，版本检查，高版本文件下载)，针对这个场景，今天用node.js来实现解决方案。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先来看个&lt;a href=&quot;https://nodejs.org/en/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方Hello World&lt;/a&gt;，几行代码即可搭建一个服务器。&lt;br&gt;&lt;figure class=&quot;highlight js
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Tech" scheme="https://chuyao.github.io/tags/Tech/"/>
+    
+      <category term="Node.js" scheme="https://chuyao.github.io/tags/Node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>消失的传统</title>
@@ -43,7 +74,7 @@
     <link href="https://chuyao.github.io/2017/06/27/interview-in-my-mind/"/>
     <id>https://chuyao.github.io/2017/06/27/interview-in-my-mind/</id>
     <published>2017-06-27T07:19:38.000Z</published>
-    <updated>2017-07-07T09:18:58.277Z</updated>
+    <updated>2017-07-11T08:37:08.979Z</updated>
     
     <content type="html"><![CDATA[<p>转载自SegmentFault <a href="https://segmentfault.com/a/1190000008682444" title="我眼中的面试" target="_blank" rel="external">我自己的文章</a></p>
 <p>&#8195;&#8195;最近在给公司招Android开发人员，面向两个方向，Framework和App，近一个月的时间以来，总体特点是Framework方向近乎无人问津，而App方向则简历“泛滥”，想招个靠谱的伙伴真的不容易。最近的工作时常被频繁的面试安排打断，面试之余，想总结一下这段时间的感受。尽量从面试流程的各个环节都有一些涉及，当作回忆也好，经验也罢。当作给自己的沉淀吧。</p>
@@ -108,6 +139,8 @@
 &lt;h6 id=&quot;太“简明”的简历会被刷&quot;&gt;&lt;a href=&quot;#太“简明”的简历会被刷&quot; class=&quot;headerlink&quot; title=&quot;太“简明”的简历会被刷&quot;&gt;&lt;/a&gt;太“简明”的简历会被刷&lt;/h6&gt;&lt;p&gt;&amp;#8195;&amp;#8195;简明到只有各种荣誉证书各种精通，却没有具体的项目介绍，想简明可以贴个作品链接啊，那些证书、精通的我们真的不太在乎，我们只希望能多了解一些你的工作经历，当然我们真的希望你能精通。&lt;/p&gt;
     
     </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Tech" scheme="https://chuyao.github.io/tags/Tech/"/>
