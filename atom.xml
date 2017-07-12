@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-07-12T03:35:06.689Z</updated>
+  <updated>2017-07-12T07:49:38.373Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>一个简单的Node.js服务器</title>
-    <link href="https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/"/>
-    <id>https://chuyao.github.io/2017/07/11/simple-server-with-nodejs/</id>
+    <title>一个简单的Node.js接口服务器</title>
+    <link href="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/"/>
+    <id>https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/</id>
     <published>2017-07-11T06:02:57.000Z</published>
-    <updated>2017-07-12T03:35:06.689Z</updated>
+    <updated>2017-07-12T07:49:38.373Z</updated>
     
     <content type="html"><![CDATA[<p>先来看个<a href="https://nodejs.org/en/about/" target="_blank" rel="external">官方Hello World</a>，几行代码即可搭建一个服务器。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</div><div class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  res.statusCode = <span class="number">200</span>;</div><div class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -38,7 +38,7 @@
 <p>出现的选项提示可以都使用默认选项(即一路enter到底)</p>
 <p>安装Express<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express --save</div></pre></td></tr></table></figure></p>
 <p>新建一个文件index.js，用记事本或其它文本编辑器打开，开始写我们的程序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line"><span class="keyword">const</span> verStr = &#123;<span class="attr">versionName</span> : <span class="string">'2.0.0'</span>, <span class="attr">versionCode</span> : <span class="number">200</span>&#125;;</div><div class="line"></div><div class="line">app.get(<span class="string">'/checkUpdate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  res.send(<span class="built_in">JSON</span>.stringify(verStr));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/download'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  res.download(<span class="string">'./new-release.apk'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server now listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>把需要测试升级的apk文件放到和index.js同级目录下，最后一步，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node index.js</div></pre></td></tr></table></figure></p>
+<p>保存，并把需要测试升级的apk文件(文件名称对应为new-release.apk)放到和index.js同级目录下，最后一步，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node index.js</div></pre></td></tr></table></figure></p>
 <p>即可大功告成了。</p>
 <p>检验一下我们的成果，在本机浏览器访问<br><code>http://localhost:3000/checkUpdate</code><br><code>http://localhost:3000/download</code></p>
 ]]></content>
