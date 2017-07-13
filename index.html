@@ -106,20 +106,16 @@
 <p>请尽量安装使用LTS版本，经过上边的步骤，就可以如开头所说的，快速搭建一个简单服务器了。</p>
 <p>下边进入正题，先说一个场景，一个客户端开发人员，需要对接口进行测试，需要接口假数据，真的会有一些开发人员说：“没有数据我开发不了！”，而碰巧后端同事又还没空开发接口、做假数据，怎么办？求人不如求己！具体到开发案例场景，客户端开发需要一个升级检查功能(一般包含两部分，版本检查，高版本文件下载)，针对这个场景，今天用node.js来实现解决方案。</p>
 <p>为了最大程度的简单，这次使用<a href="http://expressjs.com/" target="_blank" rel="external">Express</a>，一个目前非常流行的基于Node.js的Web应用开发框架来实现，帮助我们处理http请求及请求路由的简单实现。</p>
-<p>系统命令行状态下，建立程序目标文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir myserver</div><div class="line">$ <span class="built_in">cd</span> myserver</div></pre></td></tr></table></figure></p>
-<p>初始化程序包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure></p>
-<p>出现的选项提示可以都使用默认选项(即一路enter到底)</p>
-<p>安装Express<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express --save</div></pre></td></tr></table></figure></p>
-<p>新建一个文件index.js，用记事本或其它文本编辑器打开，开始写我们的程序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>); <span class="comment">//引入express模块</span></div><div class="line"><span class="keyword">var</span> app = express();  <span class="comment">//express对象</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> verStr = &#123;<span class="attr">versionName</span> : <span class="string">'2.0.0'</span>, <span class="attr">versionCode</span> : <span class="number">200</span>&#125;;  <span class="comment">//版本检查返回的数据，假数据，自行修改</span></div><div class="line"></div><div class="line">app.get(<span class="string">'/checkUpdate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123; <span class="comment">//版本检查接口</span></div><div class="line">  res.send(<span class="built_in">JSON</span>.stringify(verStr));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/download'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;  <span class="comment">//新版本文件下载接口</span></div><div class="line">  res.download(<span class="string">'./new-release.apk'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//服务端口监听</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server now listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>保存，并把需要测试升级的apk文件(文件名称对应为new-release.apk)放到和index.js同级目录下，最后一步，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node index.js</div></pre></td></tr></table></figure></p>
-<p>即可大功告成了。</p>
-<p>检验一下我们的成果，在本机浏览器访问<br><code>http://localhost:3000/checkUpdate</code><br><code>http://localhost:3000/download</code></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/07/11/simple-api-server-with-nodejs/#more">Read more</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj520hhy90007uouwoab07muk" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj520qqwp00072guw7huy6ku1" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -167,7 +163,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj520hhyd000buouwinvdqu23" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj520qqwt000a2guwxl3rpl31" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
@@ -220,7 +216,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj520hhxw0005uouwufcfu79v" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj520qqwd00052guwiyhgx88a" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -266,7 +262,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/19/markdown-test/" data-id="cj520hhy70006uouw6qpy6g5g" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/19/markdown-test/" data-id="cj520qqwo00062guw1iytlr1q" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -312,7 +308,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj520hhyg000duouwfqcv4e6x" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj520qqwv000c2guweyke1awm" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
@@ -356,7 +352,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/" data-id="cj520hhxq0002uouwnvrqomzq" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/" data-id="cj520qqvx00002guwbzl3nh2z" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -408,7 +404,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/05/hello-world/" data-id="cj520hhxh0000uouwko19n37t" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/05/hello-world/" data-id="cj520qqw600022guwbctw1nw8" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
