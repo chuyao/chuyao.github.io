@@ -56,7 +56,9 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
+        <!--
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        -->
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chuyao.github.io"></form>
@@ -108,7 +110,7 @@
 <p>初始化程序包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure></p>
 <p>出现的选项提示可以都使用默认选项(即一路enter到底)</p>
 <p>安装Express<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express --save</div></pre></td></tr></table></figure></p>
-<p>新建一个文件index.js，用记事本或其它文本编辑器打开，开始写我们的程序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line"><span class="keyword">const</span> verStr = &#123;<span class="attr">versionName</span> : <span class="string">'2.0.0'</span>, <span class="attr">versionCode</span> : <span class="number">200</span>&#125;;</div><div class="line"></div><div class="line">app.get(<span class="string">'/checkUpdate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  res.send(<span class="built_in">JSON</span>.stringify(verStr));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/download'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">  res.download(<span class="string">'./new-release.apk'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server now listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>新建一个文件index.js，用记事本或其它文本编辑器打开，开始写我们的程序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>); <span class="comment">//引入express模块</span></div><div class="line"><span class="keyword">var</span> app = express();  <span class="comment">//express对象</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> verStr = &#123;<span class="attr">versionName</span> : <span class="string">'2.0.0'</span>, <span class="attr">versionCode</span> : <span class="number">200</span>&#125;;  <span class="comment">//版本检查返回的数据，假数据，自行修改</span></div><div class="line"></div><div class="line">app.get(<span class="string">'/checkUpdate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123; <span class="comment">//版本检查接口</span></div><div class="line">  res.send(<span class="built_in">JSON</span>.stringify(verStr));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(<span class="string">'/download'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;  <span class="comment">//新版本文件下载接口</span></div><div class="line">  res.download(<span class="string">'./new-release.apk'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//服务端口监听</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server now listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>保存，并把需要测试升级的apk文件(文件名称对应为new-release.apk)放到和index.js同级目录下，最后一步，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node index.js</div></pre></td></tr></table></figure></p>
 <p>即可大功告成了。</p>
 <p>检验一下我们的成果，在本机浏览器访问<br><code>http://localhost:3000/checkUpdate</code><br><code>http://localhost:3000/download</code></p>
@@ -117,7 +119,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj51t8xz70007louwi3zmqmid" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj520hhy90007uouwoab07muk" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -165,7 +167,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj51t8xzb000blouwh103j0ki" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj520hhyd000buouwinvdqu23" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
@@ -218,7 +220,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj51t8xyu0005louwvpa2x7zs" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj520hhxw0005uouwufcfu79v" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -264,7 +266,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/19/markdown-test/" data-id="cj51t8xz40006louwhlivd9yn" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/19/markdown-test/" data-id="cj520hhy70006uouw6qpy6g5g" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
@@ -310,7 +312,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj51t8xze000dlouw6m9y7y0p" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj520hhyg000duouwfqcv4e6x" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
@@ -354,7 +356,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/" data-id="cj51t8xyo0002louwrwqqjzbx" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/10/build-a-hexo-blog/" data-id="cj520hhxq0002uouwnvrqomzq" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -406,7 +408,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/05/hello-world/" data-id="cj51t8xyg0000louww3jo7x6q" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/05/hello-world/" data-id="cj520hhxh0000uouwko19n37t" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/">Tech</a></li></ul>
