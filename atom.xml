@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-08-10T08:37:02.276Z</updated>
+  <updated>2017-08-10T08:45:54.577Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/"/>
     <id>https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/</id>
     <published>2017-08-10T07:36:15.000Z</published>
-    <updated>2017-08-10T08:37:02.276Z</updated>
+    <updated>2017-08-10T08:45:54.577Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;如果你之前了解过Kotlin，认为它是一门很强大的语言，那么你应该尝试去学习和使用它，这就是你来到这里的原因。这篇文章，我们将学习如何配置Android Studio下的Kotlin开发环境。<br>&#8195;&#8195;启动Android Studio，新建一个项目工程，如下图如示<br><img src="/2017/08/10/kotlin-android-tutorial-1/1.png" alt="新工程 + Kotlin支持"><br>&#8195;&#8195;按照下一步提示创建工程并等待创建过程完成。</p>
 <p>&#8195;&#8195;<em>对于Android Studio 2.x版本，你需要预先安装Kotlin插件，安装步骤为“File -&gt; Settings -&gt; Plugin”，在弹出的对话框搜索栏内搜索“Kotlin”，安装并重启你的Android Studio。</em></p>
@@ -40,8 +40,8 @@
 <li>所有的重载方法以<em>override</em>关键字开头。</li>
 <li>你需要在实例对象后面加一个问号“<em>?</em>”来声明它是一个对象。</li>
 </ol>
-<p>&#8195;&#8195;现在，像以往一样运行你的应用。<br><img src="/2017/08/10/kotlin-android-tutorial-1/5.png" alt="输出HelloKotlin"></p>
-<h3 id="原文出自Chapter-1-Configuring-Android-Studio-with-Kotlin"><a href="#原文出自Chapter-1-Configuring-Android-Studio-with-Kotlin" class="headerlink" title="原文出自Chapter 1 : Configuring Android Studio with Kotlin"></a>原文出自<a href="http://chintanrathod.com/chapter-1-configuring-android-studio-kotlin/" target="_blank" rel="external">Chapter 1 : Configuring Android Studio with Kotlin</a></h3>]]></content>
+<p>&#8195;&#8195;现在，像以往一样运行你的应用。<br><img src="/2017/08/10/kotlin-android-tutorial-1/5.png" alt="输出HelloKotlin"><br>&#8195;&#8195;<br>&#8195;&#8195;<br>&#8195;&#8195;</p>
+<h3 id="原文出自-Chapter-1-Configuring-Android-Studio-with-Kotlin"><a href="#原文出自-Chapter-1-Configuring-Android-Studio-with-Kotlin" class="headerlink" title="原文出自 Chapter 1 : Configuring Android Studio with Kotlin"></a><center><em>原文出自 <a href="http://chintanrathod.com/chapter-1-configuring-android-studio-kotlin/" target="_blank" rel="external">Chapter 1 : Configuring Android Studio with Kotlin</a></em></center></h3>]]></content>
     
     <summary type="html">
     
