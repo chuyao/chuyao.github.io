@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>分类: Tech | Allen&#39;s Blog</title>
+  <title>(译) Kotlin变量 (Android) | Allen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Allen&#39;s Blog">
-<meta property="og:url" content="https://chuyao.github.io/categories/Tech/index.html">
+  <meta name="description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta name="keywords" content="Android,Kotlin,Translation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(译) Kotlin变量 (Android)">
+<meta property="og:url" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta property="og:image" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/1.gif">
+<meta property="og:updated_time" content="2017-08-10T10:25:12.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Allen&#39;s Blog">
+<meta name="twitter:title" content="(译) Kotlin变量 (Android)">
+<meta name="twitter:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta name="twitter:image" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/1.gif">
   
     <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
   
@@ -67,115 +74,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/10/kotlin-android-tutorial-2/" class="archive-article-date">
-  <time datetime="2017-08-10T09:31:07.000Z" itemprop="datePublished">8月 10</time>
+        <section id="main"><article id="post-kotlin-android-tutorial-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/10/kotlin-android-tutorial-2/" class="article-date">
+  <time datetime="2017-08-10T09:31:07.000Z" itemprop="datePublished">2017-08-10</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/kotlin-android-tutorial-2/">(译) Kotlin变量 (Android)</a>
+    <h1 class="article-title" itemprop="name">
+      (译) Kotlin变量 (Android)
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/10/kotlin-android-tutorial-1/" class="archive-article-date">
-  <time datetime="2017-08-10T07:36:15.000Z" itemprop="datePublished">8月 10</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/kotlin-android-tutorial-1/">(译) Kotlin基础教程第一章：在Android Studio上配置Kotlin开发环境</a>
-    </h1>
-  
+        <p>&#8195;&#8195;这篇文章，你将学习到Kotlin变量的相关知识。<br>&#8195;&#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。</p>
+<h5 id="在Android-Studio上配置Kotlin开发环境"><a href="#在Android-Studio上配置Kotlin开发环境" class="headerlink" title="在Android Studio上配置Kotlin开发环境"></a><em><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">在Android Studio上配置Kotlin开发环境</a></em></h5><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><p>&#8195;&#8195;在Kotlin中，<em>一切都是对象</em><br><img src="/2017/08/10/kotlin-android-tutorial-2/1.gif" alt="WTF"></p>
+<blockquote>
+<p>在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–<a href="https://antonioleiva.com/about/" target="_blank" rel="external">安东尼奥.雷瓦</a></p>
+</blockquote>
+<p>&#8195;&#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。</p>
+<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line">val &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/31/nexus5x-bootloop-fix/" class="archive-article-date">
-  <time datetime="2017-07-31T06:22:18.000Z" itemprop="datePublished">7月 31</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/31/nexus5x-bootloop-fix/">(译) 解决Nexus5X手机死循环启动问题，帮助你最终启动手机</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/11/simple-api-server-with-nodejs/" class="archive-article-date">
-  <time datetime="2017-07-11T06:02:57.000Z" itemprop="datePublished">7月 11</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/" data-id="cj66asdgt0002wouw12o526yo" class="article-share-link">分享</a>
+       -->
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/simple-api-server-with-nodejs/">一个简单的Node.js接口服务器</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/27/interview-in-my-mind/" class="archive-article-date">
-  <time datetime="2017-06-27T07:19:38.000Z" itemprop="datePublished">6月 27</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/interview-in-my-mind/">我眼中的面试 (转)</a>
-    </h1>
   
+    <a href="/2017/08/10/kotlin-android-tutorial-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">(译) Kotlin基础教程第一章：在Android Studio上配置Kotlin开发环境</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
