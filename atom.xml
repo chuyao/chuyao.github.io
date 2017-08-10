@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-08-01T07:43:24.091Z</updated>
+  <updated>2017-08-10T08:37:02.276Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -16,11 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin基础教程第一章：在Android Studio上配置Kotlin开发环境</title>
+    <link href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/"/>
+    <id>https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/</id>
+    <published>2017-08-10T07:36:15.000Z</published>
+    <updated>2017-08-10T08:37:02.276Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#8195;&#8195;如果你之前了解过Kotlin，认为它是一门很强大的语言，那么你应该尝试去学习和使用它，这就是你来到这里的原因。这篇文章，我们将学习如何配置Android Studio下的Kotlin开发环境。<br>&#8195;&#8195;启动Android Studio，新建一个项目工程，如下图如示<br><img src="/2017/08/10/kotlin-android-tutorial-1/1.png" alt="新工程 + Kotlin支持"><br>&#8195;&#8195;按照下一步提示创建工程并等待创建过程完成。</p>
+<p>&#8195;&#8195;<em>对于Android Studio 2.x版本，你需要预先安装Kotlin插件，安装步骤为“File -&gt; Settings -&gt; Plugin”，在弹出的对话框搜索栏内搜索“Kotlin”，安装并重启你的Android Studio。</em></p>
+<p>&#8195;&#8195;先让我们看一下新建工程的<em>gradle</em>文件。<br><img src="/2017/08/10/kotlin-android-tutorial-1/2.png" alt="工程根目录build.gradle"></p>
+<ol>
+<li>Kotlin依赖版本声明。(这篇文章编写时，版本号为1.1.3-2)</li>
+<li>Kotlin依赖插件声明。</li>
+</ol>
+<p>&#8195;&#8195;接着来看主模块的<em>gradle</em>文件。<br><img src="/2017/08/10/kotlin-android-tutorial-1/3.png" alt="主模块目录build.gradle"></p>
+<ol>
+<li>插件应用于该模块。</li>
+<li>Kotlin标准库。你可以从<a href="https://kotlinlang.org/api/latest/jvm/stdlib/" target="_blank" rel="external">Kotlin官网</a>获取更多相关信息。</li>
+</ol>
+<p>&#8195;&#8195;你应该已经注意到，当Kotlin类创建时，类文件的后缀名默认已经变成“.kt”。<br><img src="/2017/08/10/kotlin-android-tutorial-1/4.png" alt="MainActivity.kt"></p>
+<ol>
+<li>所有的实例对象以冒号“:”和类的默认构造器形式展现。</li>
+<li>所有的重载方法以<em>override</em>关键字开头。</li>
+<li>你需要在实例对象后面加一个问号“<em>?</em>”来声明它是一个对象。</li>
+</ol>
+<p>&#8195;&#8195;现在，像以往一样运行你的应用。<br><img src="/2017/08/10/kotlin-android-tutorial-1/5.png" alt="输出HelloKotlin"></p>
+<h3 id="原文出自Chapter-1-Configuring-Android-Studio-with-Kotlin"><a href="#原文出自Chapter-1-Configuring-Android-Studio-with-Kotlin" class="headerlink" title="原文出自Chapter 1 : Configuring Android Studio with Kotlin"></a>原文出自<a href="http://chintanrathod.com/chapter-1-configuring-android-studio-kotlin/" target="_blank" rel="external">Chapter 1 : Configuring Android Studio with Kotlin</a></h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#8195;&amp;#8195;如果你之前了解过Kotlin，认为它是一门很强大的语言，那么你应该尝试去学习和使用它，这就是你来到这里的原因。这篇文章，我们将学习如何配置Android Studio下的Kotlin开发环境。&lt;br&gt;&amp;#8195;&amp;#8195;启动Android
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Translation" scheme="https://chuyao.github.io/tags/Translation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>(译) 解决Nexus5X手机死循环启动问题，帮助你最终启动手机</title>
     <link href="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/"/>
     <id>https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/</id>
     <published>2017-07-31T06:22:18.000Z</published>
-    <updated>2017-08-01T07:43:24.091Z</updated>
+    <updated>2017-08-08T05:56:52.308Z</updated>
     
     <content type="html"><![CDATA[<h5 id="原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站"><a href="#原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站" class="headerlink" title="原文《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》，原文作者：Doug Lynch，源自 xda-developers.com网站"></a><center><em>原文<a href="https://www.xda-developers.com/nexus-5x-bootloop-fix-boot-phone/" target="_blank" rel="external">《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》</a>，原文作者：<a href="https://www.xda-developers.com/author/doug-lynch/" target="_blank" rel="external">Doug Lynch</a>，源自 <a href="https://www.xda-developers.com/" target="_blank" rel="external">xda-developers.com</a>网站</em></center></h5><p>&#8195;&#8195;你的LG/Google <a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>手机停止启动了吗？或者是陷入到了无休止的启动循环里了？<br>&#8195;&#8195;这种现象我们常称之为“循环启动”，起因则有很多种。大多数时候，可以通过刷入原厂固件或者恢复出厂设置来解决循环启动问题，但当遇到硬件循环启动时，通常我们并不能采取什么有效的办法，除了退货。如果你的Google Nexus 5X手机无法启动，而你尝试修复但并没有什么卵用，那么你要相信，你不是唯一一个碰到这种情况的人。Nexus 5X循环启动问题在社区里正不断被诟病，但鲜有新的解决方案。</p>
 <h3 id="Nexus-5X循环启动解决-背景"><a href="#Nexus-5X循环启动解决-背景" class="headerlink" title="Nexus 5X循环启动解决 - 背景"></a>Nexus 5X循环启动解决 - 背景</h3><p>&#8195;&#8195;过去几年里，LG旗下的智能手机在循环启动问题上有点名声。其中一个问题，起初只在<a href="https://forum.xda-developers.com/g4" target="_blank" rel="external">LG G4</a>手机上发现的问题正越来越多的出现在它发布的每一款新设备上。社区里最近在讨论<em><a href="https://www.xda-developers.com/nexus-6p-bootloop-fix/" target="_blank" rel="external">解决Nexus 6P循环启动问题</a></em>，这个设备由华为出品，而现在，一个在<a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>上可行的办法出现了，这个办法派生自我们之前写的一些引导方案。<br>&#8195;&#8195;这些解决方案有一个共同点，正表明由高通仓促发布的骁龙808/810芯片，随着使用时间的推移，正在达到退化并损坏的时候了。<em><a href="https://www.xda-developers.com/opinion-the-810-held-back-a-generation-with-deliberate-apologism-damage-control/" target="_blank" rel="external">骁龙810发热问题</a></em>都已经老生常谈了，但是，似乎808芯片也存在相同的问题，将导致设备循环启动。LG起初承认了<em><a href="https://www.xda-developers.com/xda-external-link/lg-admits-g4-bootloop-problem-is-a-hardware-fault-will-repair-affected-devices/" target="_blank" rel="external">LG G4循环启动问题确实和硬件有关</a></em>，但从未提供更多深入的信息。<br>&#8195;&#8195;一些质疑认为是焊锡的问题，在设备的使用过程中，在经历多次的加热和冷却后，焊锡会破裂。不管是否是真因，我们还是不知道问题的背后是什么，但是这个办法看起来会对Nexus 5X循环启动的问题起效。今天我们带来一个引导，真正的帮助你解决Nexus 5X循环启动问题。这则帖子末尾的讨论链接表明这个办法是未经测试的，社区里的许多用户已经报告了用这个办法可以成功。<br>&#8195;&#8195;一如既往，你可以使这个方法多样化。</p>
@@ -223,9 +268,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
     
   </entry>
   
@@ -234,7 +279,7 @@
     <link href="https://chuyao.github.io/2017/05/16/tomylove/"/>
     <id>https://chuyao.github.io/2017/05/16/tomylove/</id>
     <published>2017-05-15T16:10:49.000Z</published>
-    <updated>2017-08-01T06:51:43.519Z</updated>
+    <updated>2017-08-08T05:56:52.314Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;我的爱，我想花点时间，做点事情，关于我们的事情，请你原谅我，如此紧张，让事情可能会多花上一些时间，具体多长，我也还不知道，我只想做好一点。<br>&#8195;&#8195;今天是5月16日，下个月的今天会是我们一周年的日子，今年，刚好我们认识十年了，有好多想说的，有好多可以回忆的，就以这个开始这个事情吧。初步打算花一个的时间，完成这个事情，然而一个月的时间，如何叙说一年，十年的时光？<br>&#8195;&#8195;幕布开启，似乎尽是美好。<br>&#8195;&#8195;十年前，素不相识的我们成了大学同窗，活泼的你，安静的我，像是没有什么交集。青春，阳光，笑声，舞蹈，你永远是人群里的焦点，像是自带光环，亮亮的；我腼腆，远观，偶尔，跟着笑一笑，开一开心，很满足，没有什么遗憾。青春，真的很美好！<br>&#8195;&#8195;今天是5月23日，工作、生活在打乱着我的思绪，你是否也是，这段经历，好在我们都能调整心态过来，相信该是我们的会是我们的，我们努力了就好。但也让我认识到，以前总觉得我自己已经很努力了，显然，我自己努力的还不够，为了我们一个更好的未来，我还需要更多的努力。<br>&#8195;&#8195;今天是6月9日，事情在变得断断续续了，这不是我想要的样子，这件事情如果我做不好，我会看不起自己，我不是那么浪漫的人，这些都是我的方式，尽我所能，我花了很多时间去想这个事情，我确定这件事情对我很重要，当我发现我无论怎样准备都会让我觉得完美的时候，我焦虑，绝望，想写很多东西，作为这件事情的仪式感，我们很需要这个仪式感，我把它当成我这辈子最重要的时刻之一。<br>&#8195;&#8195;今天是6月11日，时光荏苒，转眼就大学毕业六年了。昨天，我们刚和几位大学同学相聚，庆祝大学毕业六周年的日子，一起讨论着大家的过去，现在和未来，很开心。九月份，作为同学，我们将迎来相识十周年，很奇妙的时光，生命中，苍茫人海，步履匆匆，缘何我们能遇到了一起？<br>&#8195;&#8195;今天是6月16日，天！怎么会这么快？！我真的准备好了吗？好在晚上就能和你见面了，没想过这样的日子要是我们不能在一起会是怎么样。然而，事情真的要在这个周末发生吗？好紧张了，天！请赐给我点力量吧！出发吧…<br>&#8195;&#8195;今天是6月19日，一觉醒来，各种情绪叠加在一起，似乎太累了，这个周末就这样过了，事情并没按照我的预期完成，更没想到，这个本该完美的周末会变得有些悲伤，我想，是我的准备还没做好吧。<a id="more"></a><br>&#8195;&#8195;今天是6月23日，这场连续几天的暴雨，我也是无话可说了，不就是搞个事情吗，错过的一周年的日子，真的还要错过今天吗？今天也是那么印象深刻的日子，然而需要那么坎坷？来吧，下得再猛些…<br>&#8195;&#8195;今天是7月13日，工作、生活的琐事似乎终于可以告一段落了，这段我们完成了一件大事，靠着一份坚持，希望能成为我们以后的一笔精神财富，我结束漂泊，更给我们带来可期的安定。我突然想换个方式做这个事情了，想请你看个电影，关于我们的“电影”。</p>
 <h3 id="未来"><a href="#未来" class="headerlink" title="未来"></a><center>未来</center></h3><p><img src="/2017/05/16/tomylove/1.jpg" alt="阳光总是很好"></p>
