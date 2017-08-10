@@ -101,13 +101,15 @@
 <p>在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–<a href="https://antonioleiva.com/about/" target="_blank" rel="external">安东尼奥.雷瓦</a></p>
 </blockquote>
 <p>&#8195;&#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。</p>
-<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line">val &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line"><span class="keyword">val</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i : <span class="built_in">Int</span> = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d : <span class="built_in">Double</span> = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f : <span class="built_in">Float</span> = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l : <span class="built_in">Long</span> = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c : <span class="built_in">Char</span> = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s : String = <span class="string">"Chintan"</span></div></pre></td></tr></table></figure>
+<p>上边的例子将立即对对象进行赋值，通过例子，你可有什么发现？<br>没有？<br>分号！<br><img src="/2017/08/10/kotlin-android-tutorial-2/2.gif" alt="Yeah!"><br>你可以更简单一点，就像下边这样<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s = <span class="string">"Chintan"</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/" data-id="cj66asdgt0002wouw12o526yo" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/" data-id="cj66bfx8t0005f8uwcp4sqlxa" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -159,7 +161,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj66asdh50005wouwhzg66ic1" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj66bfx8m0002f8uwnm289ruy" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -213,7 +215,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj66asdhk0006wouw052bqscm" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj66bfx9c0006f8uwholsnddr" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -271,7 +273,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj66asdhm0007wouwwteu7orn" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj66bfx9e0007f8uw44yg3kck" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
@@ -319,7 +321,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj66asdhq000awouw7k89u5v0" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj66bfx9h000af8uw4ojfp2oz" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
@@ -372,7 +374,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj66asdgi0000wouwigot9b3x" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj66bfx8d0000f8uwgpiokftp" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
@@ -420,7 +422,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj66asdhr000cwouwsa0jqsfb" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj66bfx9k000cf8uwcwgd2ig1" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>

@@ -13,7 +13,8 @@
 <meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
 <meta property="og:image" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/1.gif">
-<meta property="og:updated_time" content="2017-08-10T10:25:12.729Z">
+<meta property="og:image" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/2.gif">
+<meta property="og:updated_time" content="2017-08-10T10:43:17.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(译) Kotlin变量 (Android)">
 <meta name="twitter:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
@@ -106,13 +107,15 @@
 <p>在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–<a href="https://antonioleiva.com/about/" target="_blank" rel="external">安东尼奥.雷瓦</a></p>
 </blockquote>
 <p>&#8195;&#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。</p>
-<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line">val &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line"><span class="keyword">val</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i : <span class="built_in">Int</span> = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d : <span class="built_in">Double</span> = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f : <span class="built_in">Float</span> = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l : <span class="built_in">Long</span> = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c : <span class="built_in">Char</span> = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s : String = <span class="string">"Chintan"</span></div></pre></td></tr></table></figure>
+<p>上边的例子将立即对对象进行赋值，通过例子，你可有什么发现？<br>没有？<br>分号！<br><img src="/2017/08/10/kotlin-android-tutorial-2/2.gif" alt="Yeah!"><br>你可以更简单一点，就像下边这样<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s = <span class="string">"Chintan"</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/" data-id="cj66asdgt0002wouw12o526yo" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-2/" data-id="cj66bfx8t0005f8uwcp4sqlxa" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
