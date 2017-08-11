@@ -6,14 +6,14 @@
   <title>(译) Kotlin基础教程第三章：Kotlin运算符 (Android) | Allen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
-<meta name="keywords" content="Android,Kotlin,Translation">
+<meta name="keywords" content="Kotlin,Android,Translation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(译) Kotlin基础教程第三章：Kotlin运算符 (Android)">
 <meta property="og:url" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-3/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
 <meta property="og:image" content="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-3/1.gif">
-<meta property="og:updated_time" content="2017-08-11T04:25:36.622Z">
+<meta property="og:updated_time" content="2017-08-11T04:47:17.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(译) Kotlin基础教程第三章：Kotlin运算符 (Android)">
 <meta name="twitter:description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
@@ -137,7 +137,32 @@
 </tbody>
 </table>
 <h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>&#8195;&#8195;如果你正在使用的Kotlin是1.1版本，请使用<em>rem()</em>方法，<em>mod()</em>方法从1.1版本开始已经过时了。<br>&#8195;&#8195;如你所见，每一个二进制运算符都有一个方法让它更易读。当你想对自定义的类使用运算方法时，你会感觉很容易使用以及重载。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>) &#123;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(increment: <span class="type">Int</span>)</span></span>: Test &#123;</div><div class="line">        <span class="keyword">return</span> Test(count + increment)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">times</span><span class="params">(multiply: <span class="type">Int</span>)</span></span>: Test &#123;</div><div class="line">        <span class="keyword">return</span> Test(count + multiply)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</div><div class="line">println(test + <span class="number">10</span>)  <span class="comment">//输出 -&gt; Test(count=20)</span></div><div class="line">println(test * <span class="number">2</span>)   <span class="comment">//输出 -&gt; Test(count=12)</span></div></pre></td></tr></table></figure></p>
-<a id="more"></a>阴吹斯汀！<br><img src="/2017/08/10/kotlin-android-tutorial-3/1.gif" alt="Na ni~"><br>#### 一元运算<br>&#8195;&#8195;在Java或其它语言中，你一定很熟悉一元运算符。在Kotlin中，只要你愿意，你也可以在自定义类中使用和重载它们。<br><br>| 表达式   | 方法                |<br>| :——- | :——————|<br>| +a   | a.unaryPlus()          |<br>| -a   | a.unaryMinus()         |<br>| !a   | a.not()                |<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>)</div><div class="line"></div><div class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Test.<span class="title">unaryMinus</span><span class="params">()</span></span> = Test(-count)</div><div class="line"></div><div class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</div><div class="line">println(-test)       <span class="comment">//输出 -&gt; Test(count=-10)</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>阴吹斯汀！<br><img src="/2017/08/10/kotlin-android-tutorial-3/1.gif" alt="Na ni~"></p>
+<h4 id="一元运算"><a href="#一元运算" class="headerlink" title="一元运算"></a>一元运算</h4><p>&#8195;&#8195;在Java或其它语言中，你一定很熟悉一元运算符。在Kotlin中，只要你愿意，你也可以在自定义类中使用和重载它们。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">+a</td>
+<td style="text-align:left">a.unaryPlus()</td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">a.unaryMinus()</td>
+</tr>
+<tr>
+<td style="text-align:left">!a</td>
+<td style="text-align:left">a.not()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>)</div><div class="line"></div><div class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Test.<span class="title">unaryMinus</span><span class="params">()</span></span> = Test(-count)</div><div class="line"></div><div class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</div><div class="line">println(-test)       <span class="comment">//输出 -&gt; Test(count=-10)</span></div></pre></td></tr></table></figure>
 <p>&#8195;&#8195;可以看到，一元方法是没有参数的。当<em>-test</em>被调用时，它会检查<em>unaryMinus()</em>是否已经被重载，如果是，就会返回适当的结果。</p>
 <h4 id="自增和自减"><a href="#自增和自减" class="headerlink" title="自增和自减"></a>自增和自减</h4><p>&#8195;&#8195;没有这个运算符，你的循环是不完整的。是的，<em>++</em>和<em>–</em>是非常有用的运算符，接着看表和重载方法</p>
 <table>
@@ -281,7 +306,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-3/" data-id="cj67dezib0001lwuwc0072o0g" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-3/" data-id="cj67e5rno0000ywuwfmkyrbcy" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
