@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-08-16T03:01:04.918Z</updated>
+  <updated>2017-08-17T04:11:52.354Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -14,6 +14,322 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin基础教程第三章：Kotlin运算符 (Android)</title>
+    <link href="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/"/>
+    <id>https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/</id>
+    <published>2017-08-15T13:55:47.000Z</published>
+    <updated>2017-08-17T04:11:52.354Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#8195;&#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。<br>&#8195;&#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。</p>
+<h5 id="第一章：在Android-Studio中配置Kotlin环境"><a href="#第一章：在Android-Studio中配置Kotlin环境" class="headerlink" title="第一章：在Android Studio中配置Kotlin环境"></a><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">第一章：在Android Studio中配置Kotlin环境</a></h5><h5 id="第二章：Kotlin变量-Android"><a href="#第二章：Kotlin变量-Android" class="headerlink" title="第二章：Kotlin变量 (Android)"></a><a href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/">第二章：Kotlin变量 (Android)</a></h5><h4 id="二进制运算符"><a href="#二进制运算符" class="headerlink" title="二进制运算符"></a>二进制运算符</h4><p>&#8195;&#8195;在运算符的使用上，Kotlin是一门强大的语言。在其它计算机语言如Java中，是不允许用户在非原始类型数据间使用算术运算符的。你想对ArrayList使用“<em>+</em>”，是不允许的。但Kotlin可以，Kotlin提供了二进制运算符相对应的可重载的方法名。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a + b</td>
+<td style="text-align:left">a.plus(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a - b</td>
+<td style="text-align:left">a.minus(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a * b</td>
+<td style="text-align:left">a.times(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a / b</td>
+<td style="text-align:left">a.div(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a % b</td>
+<td style="text-align:left">a.rem(b), a.mod(b)(过时的)</td>
+</tr>
+<tr>
+<td style="text-align:left">a..b</td>
+<td style="text-align:left">a.rangeTo(b)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>&#8195;&#8195;如果你正在使用的Kotlin是1.1版本，请使用<em>rem()</em>方法，<em>mod()</em>方法从1.1版本开始已经过时了。<br>&#8195;&#8195;如你所见，每一个二进制运算符都有一个方法让它更易读。当你想对自定义的类使用运算方法时，你会感觉很容易使用以及重载。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>) &#123;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(increment: <span class="type">Int</span>)</span></span>: Test &#123;</div><div class="line">        <span class="keyword">return</span> Test(count + increment)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">times</span><span class="params">(multiply: <span class="type">Int</span>)</span></span>: Test &#123;</div><div class="line">        <span class="keyword">return</span> Test(count + multiply)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</div><div class="line">println(test + <span class="number">10</span>)  <span class="comment">//输出 -&gt; Test(count=20)</span></div><div class="line">println(test * <span class="number">2</span>)   <span class="comment">//输出 -&gt; Test(count=12)</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>阴吹斯汀！</p>
+<h4 id="一元运算"><a href="#一元运算" class="headerlink" title="一元运算"></a>一元运算</h4><p>&#8195;&#8195;在Java或其它语言中，你一定很熟悉一元运算符。在Kotlin中，只要你愿意，你也可以在自定义类中使用和重载它们。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">+a</td>
+<td style="text-align:left">a.unaryPlus()</td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">a.unaryMinus()</td>
+</tr>
+<tr>
+<td style="text-align:left">!a</td>
+<td style="text-align:left">a.not()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>)</div><div class="line"></div><div class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Test.<span class="title">unaryMinus</span><span class="params">()</span></span> = Test(-count)</div><div class="line"></div><div class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</div><div class="line">println(-test)       <span class="comment">//输出 -&gt; Test(count=-10)</span></div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;可以看到，一元方法是没有参数的。当<em>-test</em>被调用时，它会检查<em>unaryMinus()</em>是否已经被重载，如果是，就会返回适当的结果。</p>
+<h4 id="自增和自减"><a href="#自增和自减" class="headerlink" title="自增和自减"></a>自增和自减</h4><p>&#8195;&#8195;没有这个运算符，你的循环是不完整的。是的，<em>++</em>和<em>–</em>是非常有用的运算符，接着看表和重载方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a++</td>
+<td style="text-align:left">a.inc()</td>
+</tr>
+<tr>
+<td style="text-align:left">a–</td>
+<td style="text-align:left">a.dec()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> BigDecimal.<span class="title">inc</span><span class="params">()</span></span> = <span class="keyword">this</span> + BigDecimal.ONE</div><div class="line"><span class="keyword">var</span> bigDec = BigDecimal.ZERO</div><div class="line">println(bigDec++)  <span class="comment">//输出 -&gt; 0</span></div><div class="line">println(++bigDec)  <span class="comment">//输出 -&gt; 2</span></div></pre></td></tr></table></figure>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>&#8195;&#8195;使用赋值运算符，你通过操作二进制运算符来改变对象的值。当使用简单的二进制运算符时，对象的值不会被改变。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a += b</td>
+<td style="text-align:left">a.plusAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a -= b</td>
+<td style="text-align:left">a.minusAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a *= b</td>
+<td style="text-align:left">a.timesAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a /= b</td>
+<td style="text-align:left">a.divAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a %= b</td>
+<td style="text-align:left">a.modAssign(b)</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> mutableCollection = mutableListOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="keyword">val</span> iterable = listOf(<span class="number">4</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line">mutableCollection.plusAssign(iterable)</div><div class="line">println(mutableCollection)  <span class="comment">//输出 -&gt; [1, 2, 3, 4, 5]</span></div><div class="line"></div><div class="line">mutableCollection += <span class="number">6</span></div><div class="line">println(mutableCollection)  <span class="comment">//输出 -&gt; [1, 2, 3, 4, 5, 6]</span></div></pre></td></tr></table></figure>
+<h4 id="其它运算符"><a href="#其它运算符" class="headerlink" title="其它运算符"></a>其它运算符</h4><p>&#8195;&#8195;还有许多其它的运算符可以使用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a in b</td>
+<td style="text-align:left">b.contains(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">a !in b</td>
+<td style="text-align:left">!b.contains(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i]</td>
+<td style="text-align:left">a.get(i)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i, j]</td>
+<td style="text-align:left">a.get(i, j)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i_1, …, i_n]</td>
+<td style="text-align:left">a.get(i_1, …, i_n)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i] = b</td>
+<td style="text-align:left">a.set(i, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i, j] = b</td>
+<td style="text-align:left">a.set(i, j, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i_1, …, i_n] = b</td>
+<td style="text-align:left">a.set(i_1, …, i_n, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a == b</td>
+<td style="text-align:left">a?.equals(b) ?: (b === null)</td>
+</tr>
+<tr>
+<td style="text-align:left">a != b</td>
+<td style="text-align:left">!(a?.equals(b) ?: (b === null))</td>
+</tr>
+<tr>
+<td style="text-align:left">a()</td>
+<td style="text-align:left">a.invoke()</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i)</td>
+<td style="text-align:left">a.invoke(i)</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i, j)</td>
+<td style="text-align:left">a.invoke(i, j)</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i_1, …, i_n)</td>
+<td style="text-align:left">a.invoke(i_1, …, i_n)</td>
+</tr>
+<tr>
+<td style="text-align:left">a &gt; b</td>
+<td style="text-align:left">a.compareTo(b) &gt; 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &lt; b</td>
+<td style="text-align:left">a.compareTo(b) &lt; 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &gt;= b</td>
+<td style="text-align:left">a.compareTo(b) &gt;= 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &lt;= b</td>
+<td style="text-align:left">a.compareTo(b) &lt;= 0</td>
+</tr>
+</tbody>
+</table>
+<p>&#8195;&#8195;尝试在你自己的例子中使用上面的运算符，分享一下你的经历。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&#8195;&#8195;在本文中，你已经学习了如何在原始类型数据或自定义类之间使用运算符并重载相应的方法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&lt;br&gt;&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。&lt;/p&gt;
+&lt;h5 id=&quot;第一章：在Android-Studio中配置Kotlin环境&quot;&gt;&lt;a href=&quot;#第一章：在Android-Studio中配置Kotlin环境&quot; class=&quot;headerlink&quot; title=&quot;第一章：在Android Studio中配置Kotlin环境&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/&quot;&gt;第一章：在Android Studio中配置Kotlin环境&lt;/a&gt;&lt;/h5&gt;&lt;h5 id=&quot;第二章：Kotlin变量-Android&quot;&gt;&lt;a href=&quot;#第二章：Kotlin变量-Android&quot; class=&quot;headerlink&quot; title=&quot;第二章：Kotlin变量 (Android)&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/&quot;&gt;第二章：Kotlin变量 (Android)&lt;/a&gt;&lt;/h5&gt;&lt;h4 id=&quot;二进制运算符&quot;&gt;&lt;a href=&quot;#二进制运算符&quot; class=&quot;headerlink&quot; title=&quot;二进制运算符&quot;&gt;&lt;/a&gt;二进制运算符&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在运算符的使用上，Kotlin是一门强大的语言。在其它计算机语言如Java中，是不允许用户在非原始类型数据间使用算术运算符的。你想对ArrayList使用“&lt;em&gt;+&lt;/em&gt;”，是不允许的。但Kotlin可以，Kotlin提供了二进制运算符相对应的可重载的方法名。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;表达式&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;方法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a + b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.plus(b)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a - b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.minus(b)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a * b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.times(b)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a / b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.div(b)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a % b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.rem(b), a.mod(b)(过时的)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a..b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;a.rangeTo(b)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;注意&quot;&gt;&lt;a href=&quot;#注意&quot; class=&quot;headerlink&quot; title=&quot;注意&quot;&gt;&lt;/a&gt;注意&lt;/h5&gt;&lt;p&gt;&amp;#8195;&amp;#8195;如果你正在使用的Kotlin是1.1版本，请使用&lt;em&gt;rem()&lt;/em&gt;方法，&lt;em&gt;mod()&lt;/em&gt;方法从1.1版本开始已经过时了。&lt;br&gt;&amp;#8195;&amp;#8195;如你所见，每一个二进制运算符都有一个方法让它更易读。当你想对自定义的类使用运算方法时，你会感觉很容易使用以及重载。&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Test&lt;/span&gt;&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; count: &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(increment: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;: Test &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; Test(count + increment)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(multiply: &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;: Test &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; Test(count + multiply)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; test = Test(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;println(test + &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)  &lt;span class=&quot;comment&quot;&gt;//输出 -&amp;gt; Test(count=20)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;println(test * &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)   &lt;span class=&quot;comment&quot;&gt;//输出 -&amp;gt; Test(count=12)&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Translation" scheme="https://chuyao.github.io/tags/Translation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin基础教程第二章：Kotlin变量 (Android)</title>
+    <link href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/"/>
+    <id>https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/</id>
+    <published>2017-08-13T09:31:07.000Z</published>
+    <updated>2017-08-17T04:08:48.944Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#8195;&#8195;这篇文章，你将学习到Kotlin变量的相关知识。<br>&#8195;&#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。</p>
+<h5 id="在Android-Studio上配置Kotlin开发环境"><a href="#在Android-Studio上配置Kotlin开发环境" class="headerlink" title="在Android Studio上配置Kotlin开发环境"></a><em><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">在Android Studio上配置Kotlin开发环境</a></em></h5><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><p>&#8195;&#8195;在Kotlin中，<em>一切都是对象</em></p>
+<blockquote>
+<p>在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–<a href="https://antonioleiva.com/about/" target="_blank" rel="external">安东尼奥.雷瓦</a></p>
+</blockquote>
+<p>&#8195;&#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。</p>
+<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div><div class="line"><span class="keyword">val</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i : <span class="built_in">Int</span> = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d : <span class="built_in">Double</span> = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f : <span class="built_in">Float</span> = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l : <span class="built_in">Long</span> = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c : <span class="built_in">Char</span> = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s : String = <span class="string">"Allen"</span></div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;上边的例子将立即对对象进行赋值，通过例子，你可有什么发现？<a id="more"></a><br>&#8195;&#8195;没有？<br>&#8195;&#8195;分号！<br>&#8195;&#8195;你可以更简单一点，就像下边这样<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> d = <span class="number">1.1</span></div><div class="line"><span class="keyword">var</span> f = <span class="number">1.1</span>F</div><div class="line"><span class="keyword">var</span> l = <span class="number">1</span>L</div><div class="line"><span class="keyword">var</span> c = <span class="string">'c'</span></div><div class="line"><span class="keyword">var</span> s = <span class="string">"Allen"</span></div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;通过不同的赋值，变量将被创建为特殊的某一类型。很有趣，是吗！<br>&#8195;&#8195;下边表格列出的是你定义的对象类型在内存中的占用情况(比特位数)</p>
+<p><img src="/2017/08/13/kotlin-android-tutorial-2/3.png" alt="类型位宽"><br>&#8195;&#8195;你也可以用任何一个已定义的变量并把它赋值给一个新的变量来创建一个对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ii = i + <span class="number">1</span></div><div class="line"><span class="keyword">var</span> dd = d + <span class="number">2.0</span></div><div class="line"><span class="keyword">var</span> ff = f + <span class="number">1</span></div><div class="line"><span class="keyword">var</span> ll = l + <span class="number">1</span></div><div class="line"><span class="keyword">var</span> ss = s + <span class="string">" Shi"</span></div><div class="line"></div><div class="line">println(<span class="string">"ii : <span class="subst">$ii</span>, dd : <span class="subst">$dd</span>, ff : <span class="subst">$ff</span>, ll : <span class="subst">$ll</span>, ss : <span class="subst">$ss</span>"</span>)</div></pre></td></tr></table></figure></p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ii : <span class="number">2</span></div><div class="line">dd : <span class="number">3.1</span></div><div class="line">ff : <span class="number">2.1</span></div><div class="line">ll : <span class="number">2</span></div><div class="line">ss : Allen Shi</div></pre></td></tr></table></figure>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>&#8195;&#8195;在Kotlin中，<em>var</em>变量很常见，它是可变的，可以被多次赋值。而<em>val</em>则指常量，即，它只能被初始化一次。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mutable : <span class="built_in">Int</span> = <span class="number">5</span></div><div class="line"><span class="keyword">val</span> immutable : <span class="built_in">Int</span> = <span class="number">5</span></div><div class="line">mutable = <span class="number">10</span>    <span class="comment">//合法</span></div><div class="line">immutable = <span class="number">10</span>  <span class="comment">//非法</span></div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;在Java中，我们常不知不觉使用可变量实例，这让我们经常面对对象在多个地方修改带来的许多问题。当我们创建一个不可变对象时，它可以一直保持它原有的状态，如果我们想要改变它，则需要创建另外一个对象。<br>&#8195;&#8195;在使用Kotlin开发应用时，建议尽量多使用<em>val</em>变量。它们不受当前线程影响，因而它们是线程安全的。</p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>&#8195;&#8195;这对Kotlin来说太简单了。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"Allen"</span></div><div class="line"><span class="keyword">var</span> ss = <span class="string">"My name is <span class="subst">$s</span>"</span>  <span class="comment">// My name is Allen</span></div><div class="line"><span class="keyword">var</span> c = s[<span class="number">2</span>]              <span class="comment">// c将赋值为字符'i'</span></div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;使用<em>$</em>(美元符号)，可以引用一个对象的值。你也可以把一个字符串看待成一个数组，通过给某一个数组元素赋值来改变这个对象。</p>
+<h4 id="安全的空指针"><a href="#安全的空指针" class="headerlink" title="安全的空指针"></a>安全的空指针</h4><p>&#8195;&#8195;在以前的文章里，我说过Kotlin是空指针安全的。原因是Kotlin不允许用户将对象赋值<em>NULL</em>，除非你告诉Kotlin某个对象可能是空的才允许你那么做。你可以在类型后面加一个<em>?</em>(问号)来实现。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s : String = <span class="string">"Allen"</span></div><div class="line">s = <span class="literal">null</span> <span class="comment">//异常</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s : String? = <span class="string">"Allen"</span></div><div class="line">s = <span class="literal">null</span> <span class="comment">//正确</span></div></pre></td></tr></table></figure></p>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>&#8195;&#8195;和Java不同，Kotlin没有自动类型转换，你需要自己声明你需要的转换类型。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> i : <span class="built_in">Int</span> = <span class="number">1</span></div><div class="line"><span class="keyword">val</span> d : <span class="built_in">Double</span> = i              <span class="comment">//不可以</span></div><div class="line"><span class="keyword">val</span> d : <span class="built_in">Double</span> = i.toDouble()   <span class="comment">//可以</span></div></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&#8195;&#8195;在本文中，你将学习到如何定义不同类型的变量，<em>var</em>和<em>val</em>关键字的区别，如何从一个类型变量转换到另一个类型的变量。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&lt;br&gt;&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。&lt;/p&gt;
+&lt;h5 id=&quot;在Android-Studio上配置Kotlin开发环境&quot;&gt;&lt;a href=&quot;#在Android-Studio上配置Kotlin开发环境&quot; class=&quot;headerlink&quot; title=&quot;在Android Studio上配置Kotlin开发环境&quot;&gt;&lt;/a&gt;&lt;em&gt;&lt;a href=&quot;https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/&quot;&gt;在Android Studio上配置Kotlin开发环境&lt;/a&gt;&lt;/em&gt;&lt;/h5&gt;&lt;h4 id=&quot;变量的定义&quot;&gt;&lt;a href=&quot;#变量的定义&quot; class=&quot;headerlink&quot; title=&quot;变量的定义&quot;&gt;&lt;/a&gt;变量的定义&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在Kotlin中，&lt;em&gt;一切都是对象&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–&lt;a href=&quot;https://antonioleiva.com/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;安东尼奥.雷瓦&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。&lt;/p&gt;
+&lt;h4 id=&quot;定义第一个变量&quot;&gt;&lt;a href=&quot;#定义第一个变量&quot; class=&quot;headerlink&quot; title=&quot;定义第一个变量&quot;&gt;&lt;/a&gt;定义第一个变量&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;你可以使用&lt;em&gt;var&lt;/em&gt;或&lt;em&gt;val&lt;/em&gt;关键字简单的定义变量并指派给对象。&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; &amp;lt;object_name&amp;gt; : &amp;lt;Type&amp;gt; = &amp;lt;Value&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; &amp;lt;object_name&amp;gt; : &amp;lt;Type&amp;gt; = &amp;lt;Value&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h5 id=&quot;例如&quot;&gt;&lt;a href=&quot;#例如&quot; class=&quot;headerlink&quot; title=&quot;例如&quot;&gt;&lt;/a&gt;例如&lt;/h5&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i : &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; d : &lt;span class=&quot;built_in&quot;&gt;Double&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1.1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; f : &lt;span class=&quot;built_in&quot;&gt;Float&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1.1&lt;/span&gt;F&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; l : &lt;span class=&quot;built_in&quot;&gt;Long&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;L&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c : &lt;span class=&quot;built_in&quot;&gt;Char&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s : String = &lt;span class=&quot;string&quot;&gt;&quot;Allen&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;上边的例子将立即对对象进行赋值，通过例子，你可有什么发现？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Translation" scheme="https://chuyao.github.io/tags/Translation/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin基础教程第一章：在Android Studio中配置Kotlin环境</title>
