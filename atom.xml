@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-08-17T06:26:24.626Z</updated>
+  <updated>2017-08-18T07:56:01.131Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin基础教程第四章：Kotlin类 (Android)</title>
+    <link href="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/"/>
+    <id>https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/</id>
+    <published>2017-08-18T07:54:36.000Z</published>
+    <updated>2017-08-18T07:56:01.131Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#8195;&#8195;本篇文章，让我们来学习Kotlin类及其属性。<br>&#8195;&#8195;欢迎你回头学习之前的文章，可以让你更好的继续学习Kotlin知识。</p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>&#8195;&#8195;如果你曾学习过任何一门“面向对象编程”语言，你将对类及其属性很熟悉。</p>
+<blockquote>
+<p>一个类可以比作模板或蓝图，用来创建不同的对象，并定义对象的属性及行为。</p>
+</blockquote>
+<p>在Java中，要创建一个类，需要定义一个类，定义它的构造器、它的<em>getter</em>和<em>setter</em>方法，通过这些方式，简单的给成员变量赋值或取出它们的值。这些乏味的工作不会出现在Kotlin中。</p>
+<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a><em>Java</em></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a><em>Kotlin</em></h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String)</div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;怎么样？是不是很简洁明了？Kotlin一行代码即可实现Java需要九行代码才能实现的功能。写这样的代码，岂能不感叹“<em>人生苦短，快用Kotlin！</em>”<br>&#8195;&#8195;你应该已经注意到了，类的前边没有<em>public</em>关键字，是因为在Kotlin中，所有的类默认都是<em>public</em>的，所以可以丢掉了。</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>&#8195;&#8195;在定义的类中，一般含有一些成员变量和方法，通常，这些数据都是私有的，不能直接访问，普遍的做法是通过创建<em>getter</em>方法来获取这些数据。在所有的“<em>面向对象编程</em>”语言中，这些做法的结合，通常称为“<em>封装</em>”。在Kotlin中，赋值和取值方法有很大的不同。<br>&#8195;&#8195;声明一个属性有两种方式，如果是以 <em>val</em> 声明，则这个属性是只读的，而如果是以 <em>var</em> 声明，则这个属性是可变的，你可以在任何时刻修改它。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>(</div><div class="line">    <span class="keyword">val</span> name : String,  <span class="comment">// 只读，产生成员变量及getter</span></div><div class="line">    <span class="keyword">var</span> age : <span class="built_in">Int</span>   <span class="comment">// 可变的，产生成员变量，getter及setter</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;任何时候，你想声明一个属性，就会产生一个成员变量，一个getter或setter(取决于如何声明)。下边的例子，你可以看到如何创建一个Person实例对象，并访问它的属性。<a id="more"></a><br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = Person(<span class="string">"Allen Shi"</span>, <span class="number">18</span>)</div><div class="line">println(person.name)    <span class="comment">//输出-&gt; Allen Shi</span></div><div class="line">println(person.age)     <span class="comment">//输出-&gt; 18</span></div></pre></td></tr></table></figure></p>
+<h4 id="自定义访问器"><a href="#自定义访问器" class="headerlink" title="自定义访问器"></a>自定义访问器</h4><p>&#8195;&#8195;设想一下，你定义了一个属性并想要通过自己的逻辑来返回结果。通过自定义访问器即可实现。在本文的例子中，我们想要知道某个人是否成年，我们不需要在类中存储任何附加的属性就可简单的实现。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(</div><div class="line">    <span class="keyword">val</span> name : String,</div><div class="line">    <span class="keyword">var</span> age : <span class="built_in">Int</span></div><div class="line">) &#123;</div><div class="line">    <span class="keyword">val</span> isAdult : <span class="built_in">Boolean</span></div><div class="line">    <span class="keyword">get</span>() &#123;</div><div class="line">        <span class="keyword">return</span> age &gt; <span class="number">18</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;在这个方法里，我们定义了一个isAdult属性，通过检查age值来决定isAdult的返回值。注意，你需要将方法用val关键字来声明，否则会报错。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = Person(<span class="string">"Allen"</span>, <span class="number">20</span>)</div><div class="line">println(person1.isAdult)    <span class="comment">//输出-&gt; true</span></div><div class="line"><span class="keyword">var</span> person2 = Person(<span class="string">"Eva"</span>, <span class="number">18</span>)</div><div class="line">println(person2.isAdult)    <span class="comment">//输出-&gt; false</span></div></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&#8195;&#8195;本文，我们学习了如何声明一个类及其属性，收获了在Kotlin中的getter和setter属性，现在，你也可以声明自己的属性方法，使用自己的逻辑来返回你需要的结果了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#8195;&amp;#8195;本篇文章，让我们来学习Kotlin类及其属性。&lt;br&gt;&amp;#8195;&amp;#8195;欢迎你回头学习之前的文章，可以让你更好的继续学习Kotlin知识。&lt;/p&gt;
+&lt;h4 id=&quot;类&quot;&gt;&lt;a href=&quot;#类&quot; class=&quot;headerlink&quot; title=&quot;类&quot;&gt;&lt;/a&gt;类&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;如果你曾学习过任何一门“面向对象编程”语言，你将对类及其属性很熟悉。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个类可以比作模板或蓝图，用来创建不同的对象，并定义对象的属性及行为。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在Java中，要创建一个类，需要定义一个类，定义它的构造器、它的&lt;em&gt;getter&lt;/em&gt;和&lt;em&gt;setter&lt;/em&gt;方法，通过这些方式，简单的给成员变量赋值或取出它们的值。这些乏味的工作不会出现在Kotlin中。&lt;/p&gt;
+&lt;h5 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;&lt;em&gt;Java&lt;/em&gt;&lt;/h5&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String name;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;Kotlin&quot;&gt;&lt;a href=&quot;#Kotlin&quot; class=&quot;headerlink&quot; title=&quot;Kotlin&quot;&gt;&lt;/a&gt;&lt;em&gt;Kotlin&lt;/em&gt;&lt;/h5&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; name: String)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;怎么样？是不是很简洁明了？Kotlin一行代码即可实现Java需要九行代码才能实现的功能。写这样的代码，岂能不感叹“&lt;em&gt;人生苦短，快用Kotlin！&lt;/em&gt;”&lt;br&gt;&amp;#8195;&amp;#8195;你应该已经注意到了，类的前边没有&lt;em&gt;public&lt;/em&gt;关键字，是因为在Kotlin中，所有的类默认都是&lt;em&gt;public&lt;/em&gt;的，所以可以丢掉了。&lt;/p&gt;
+&lt;h4 id=&quot;属性&quot;&gt;&lt;a href=&quot;#属性&quot; class=&quot;headerlink&quot; title=&quot;属性&quot;&gt;&lt;/a&gt;属性&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在定义的类中，一般含有一些成员变量和方法，通常，这些数据都是私有的，不能直接访问，普遍的做法是通过创建&lt;em&gt;getter&lt;/em&gt;方法来获取这些数据。在所有的“&lt;em&gt;面向对象编程&lt;/em&gt;”语言中，这些做法的结合，通常称为“&lt;em&gt;封装&lt;/em&gt;”。在Kotlin中，赋值和取值方法有很大的不同。&lt;br&gt;&amp;#8195;&amp;#8195;声明一个属性有两种方式，如果是以 &lt;em&gt;val&lt;/em&gt; 声明，则这个属性是只读的，而如果是以 &lt;em&gt;var&lt;/em&gt; 声明，则这个属性是可变的，你可以在任何时刻修改它。&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; &lt;/span&gt;(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; name : String,  &lt;span class=&quot;comment&quot;&gt;// 只读，产生成员变量及getter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; age : &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;// 可变的，产生成员变量，getter及setter&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;任何时候，你想声明一个属性，就会产生一个成员变量，一个getter或setter(取决于如何声明)。下边的例子，你可以看到如何创建一个Person实例对象，并访问它的属性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin基础教程第三章：Kotlin运算符 (Android)</title>
@@ -270,9 +318,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -321,9 +369,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -369,9 +417,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -583,9 +631,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
