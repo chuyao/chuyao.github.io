@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="一、概述&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。 二、公钥加密&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加">
-<meta property="og:updated_time" content="2017-09-07T08:44:07.781Z">
+<meta property="og:updated_time" content="2017-09-07T08:46:22.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenSSL基础教程二：RSA命令行加解密">
 <meta name="twitter:description" content="一、概述&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。 二、公钥加密&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加">
@@ -105,7 +105,7 @@
 <li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。</li>
 </ul>
 <p>&#8195;&#8195;命令行无错误提示，即表明加密成功，来看看密文文件 <em>data_en.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat data_en.txt</div><div class="line">�W��</div><div class="line">����	u+�E�=J�w��	���� �n(W˯f�g<span class="string">'n�&lt;grHY����w�=jI�)M�.i</span></div></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;我当然看不懂了！<br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">$ cat data_en.txt</div><div class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;我当然看不懂了！<a id="more"></a><br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">$ cat data_en.txt</div><div class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</div></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;我当然依然看不懂了，但明显，两次加密生成密文是不一样的，这也是RSA加密算法的重点优势体现，密文是动态的，安全性得到了提升。</p>
 <h4 id="三、私钥解密"><a href="#三、私钥解密" class="headerlink" title="三、私钥解密"></a>三、私钥解密</h4><p>&#8195;&#8195;前面我们已经得到了密文数据文件 <em>data_en.txt</em>，我们来使用私钥进行解密还原。命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -decrypt -in data_en.txt -inkey private.key -out data_de.txt</div></pre></td></tr></table></figure></p>
 <ul>

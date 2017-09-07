@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-09-07T08:44:07.781Z</updated>
+  <updated>2017-09-07T08:46:22.905Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/</id>
     <published>2017-09-07T08:44:07.000Z</published>
-    <updated>2017-09-07T08:44:07.781Z</updated>
+    <updated>2017-09-07T08:46:22.905Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。</p>
 <h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div></pre></td></tr></table></figure></p>
@@ -29,7 +29,7 @@
 <li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。</li>
 </ul>
 <p>&#8195;&#8195;命令行无错误提示，即表明加密成功，来看看密文文件 <em>data_en.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat data_en.txt</div><div class="line">�W��</div><div class="line">����	u+�E�=J�w��	���� �n(W˯f�g<span class="string">'n�&lt;grHY����w�=jI�)M�.i</span></div></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;我当然看不懂了！<br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">$ cat data_en.txt</div><div class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;我当然看不懂了！<a id="more"></a><br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">$ cat data_en.txt</div><div class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</div></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;我当然依然看不懂了，但明显，两次加密生成密文是不一样的，这也是RSA加密算法的重点优势体现，密文是动态的，安全性得到了提升。</p>
 <h4 id="三、私钥解密"><a href="#三、私钥解密" class="headerlink" title="三、私钥解密"></a>三、私钥解密</h4><p>&#8195;&#8195;前面我们已经得到了密文数据文件 <em>data_en.txt</em>，我们来使用私钥进行解密还原。命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -decrypt -in data_en.txt -inkey private.key -out data_de.txt</div></pre></td></tr></table></figure></p>
 <ul>
@@ -45,7 +45,14 @@
     
     <summary type="html">
     
-      &lt;h4 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我
+      &lt;h4 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。&lt;/p&gt;
+&lt;h4 id=&quot;二、公钥加密&quot;&gt;&lt;a href=&quot;#二、公钥加密&quot; class=&quot;headerlink&quot; title=&quot;二、公钥加密&quot;&gt;&lt;/a&gt;二、公钥加密&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。&lt;br&gt;&amp;#8195;&amp;#8195;新建一个空白文档文件 &lt;em&gt;data.txt&lt;/em&gt;，用文本编辑器编辑文本内容，输入 &lt;em&gt;Hello RSA&lt;/em&gt; 并保存，作为我们的明文数据。&lt;br&gt;&amp;#8195;&amp;#8195;公钥加密，命令行命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;意思是：RSA工具(rsautl)加密操作(-encrypt)，导入(-in)明文数据data.txt，导入密钥(-inkey)，声明密钥是公钥(-pubin)，加密后密文输出保存到(-out)data_en.txt文件中。&lt;/li&gt;
+&lt;li&gt;加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 &lt;em&gt;-pubin&lt;/em&gt; 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 &lt;em&gt;-pubin&lt;/em&gt; 参数，命令行会报错，加密也会失败。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;命令行无错误提示，即表明加密成功，来看看密文文件 &lt;em&gt;data_en.txt&lt;/em&gt; 的内容：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ cat data_en.txt&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;�W��&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;����	u+�E�=J�w��	���� �n(W˯f�g&lt;span class=&quot;string&quot;&gt;&#39;n�&amp;lt;grHY����w�=jI�)M�.i&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#8195;&amp;#8195;我当然看不懂了！&lt;/p&gt;
     
     </summary>
     
