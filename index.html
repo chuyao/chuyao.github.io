@@ -69,6 +69,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-openssl-1-rsa-key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/07/openssl-1-rsa-key/" class="article-date">
+  <time datetime="2017-09-06T17:15:21.000Z" itemprop="datePublished">2017-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问<a href="https://www.openssl.org" target="_blank" rel="external">OpenSSL官方网站</a>及<a href="https://github.com/openssl/openssl" target="_blank" rel="external">OpenSSL开源代码库</a>。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。<br>&#8195;&#8195;2、RSA，即非对称加解密，加解密原理推荐参考<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">RSA算法原理（一）</a>及其系列文章。<br>&#8195;&#8195;3、OpenSSL作为知名的开源软件包，广泛被各大开源系统收录作为系统级软件包，比如主流版本的<a href="https://www.ubuntu.com" target="_blank" rel="external">Ubuntu</a>、<a href="https://www.centos.org" target="_blank" rel="external">CentOS</a>等Linux系操作系统，及闭源的<a href="https://www.apple.com/macos/sierra/" target="_blank" rel="external">MacOS</a>(即苹果操作系统，Unix系)，本文涉及的命令行操作均在Linux环境下进行，所以，基础的Linux操作系统知识是必须的。打开命令行工具，执行 <em>openssl version -a</em> 命令，可检测你的操作系统是否具备OpenSSL的执行环境。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ openssl version <span class="_">-a</span></div><div class="line"></div><div class="line">OpenSSL 0.9.8zh 14 Jan 2016</div><div class="line">built on: Jan 23 2017</div><div class="line">platform: darwin64-x86_64-llvm</div><div class="line">options:  bn(64,64) md2(int) rc4(ptr,char) des(idx,cisc,16,int) blowfish(idx) </div><div class="line">compiler: -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O3 -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN -DMD32_REG_T=int -DOPENSSL_NO_IDEA -DOPENSSL_PIC -DOPENSSL_THREADS -DZLIB -mmacosx-version-min=10.6</div><div class="line">OPENSSLDIR: <span class="string">"/System/Library/OpenSSL"</span></div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;以上显示即正常。</p>
+<h4 id="二、OpenSSL生成RSA密钥对"><a href="#二、OpenSSL生成RSA密钥对" class="headerlink" title="二、OpenSSL生成RSA密钥对"></a>二、OpenSSL生成RSA密钥对</h4><h5 id="私钥的生成"><a href="#私钥的生成" class="headerlink" title="私钥的生成"></a>私钥的生成</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ openssl genrsa -out private.key</div><div class="line"></div><div class="line">Generating RSA private key, 512 bit long modulus</div><div class="line">.......++++++++++++</div><div class="line">.....++++++++++++</div><div class="line">e is 65537 (0x10001)</div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;<em>openssl genrsa -out private.key</em> 这条命令的意思是：生成一个RSA算法私钥(genrsa)，保存到(-out)名为private.key的文件中。<br>&#8195;&#8195;这是最基本的生成RSA密钥的命令，其中，密钥保存的文件名可自定义，不限后缀，可以指定文件路径，如 <em>~/Desktop/private.key</em> 当然，这个命令还可以加上一些可选参数，如：</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/07/openssl-1-rsa-key/#more">Read more</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cj79u8pv7000cg0uwe2vjyve5" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-kotlin-android-tutorial-4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/18/kotlin-android-tutorial-4/" class="article-date">
@@ -115,7 +166,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cj6q813e80007rouww7yn3y7f" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cj79u8pv00007g0uw7dzz2uw5" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -199,7 +250,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cj6q813de0006rouw21opsuj1" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cj79u8puy0006g0uwwl744nv9" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -255,7 +306,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cj6q813ck0005rouwe8hke1mg" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cj79u8pun0005g0uw4clqqp4b" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -307,7 +358,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj6q813bz0002rouwe8zi48c0" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj79u8pue0002g0uw9cs9y1pn" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -361,7 +412,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj6q813el000arouw37dsqkc4" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj79u8pv4000ag0uwm2vh5imi" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -419,7 +470,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj6q813f4000grouwdiy2eyei" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj79u8pvd000gg0uwvp7euucm" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
@@ -467,7 +518,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj6q813ho001erouwklrhgk02" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj79u8pvf000jg0uwl0vhix6r" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
@@ -520,7 +571,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj6q813at0000rouwi58fdaoj" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj79u8ptz0000g0uwi3r8bx7s" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
@@ -568,7 +619,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj6q813er000crouwjstbes4z" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cj79u8pvi000ng0uwdgxm707w" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
@@ -589,7 +640,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -599,7 +650,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -609,7 +660,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 10px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
     </div>
   </div>
 
@@ -618,7 +669,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -629,6 +680,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+          </li>
         
           <li>
             <a href="/2017/08/18/kotlin-android-tutorial-4/">Kotlin基础教程第四章：Kotlin类 (Android)</a>
@@ -644,10 +699,6 @@
         
           <li>
             <a href="/2017/08/10/kotlin-android-tutorial-1/">Kotlin基础教程第一章：在Android Studio中配置Kotlin环境</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/31/nexus5x-bootloop-fix/">(译) 解决Nexus5X手机死循环启动问题，帮助你最终启动手机</a>
           </li>
         
       </ul>
