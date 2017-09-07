@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
 <meta property="og:description" content="一、概述&amp;#8195;&amp;#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问OpenSSL官方网站及OpenSSL开源代码库。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。&amp;#8195;&amp;#8195;2、RSA，即非对称加解密，加解密原理推荐参考R">
-<meta property="og:updated_time" content="2017-09-07T02:31:56.167Z">
+<meta property="og:updated_time" content="2017-09-07T06:52:07.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenSSL基础教程一：RSA加解密算法密钥">
 <meta name="twitter:description" content="一、概述&amp;#8195;&amp;#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问OpenSSL官方网站及OpenSSL开源代码库。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。&amp;#8195;&amp;#8195;2、RSA，即非对称加解密，加解密原理推荐参考R">
@@ -111,13 +111,13 @@
 <p>&#8195;&#8195;这才是它的真实面目，如果你接触过其它加密算法，应该对<em>modulus</em>、<em>exponent</em>不会感到陌生。</p>
 <h5 id="公钥的生成"><a href="#公钥的生成" class="headerlink" title="公钥的生成"></a>公钥的生成</h5><h6 id="RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥"><a href="#RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥" class="headerlink" title="RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥"></a><em>RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥</em></h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsa -in private.key -pubout -out public.key</div><div class="line"></div><div class="line">writing RSA key</div></pre></td></tr></table></figure>
 <p>&#8195;&#8195;<em>openssl rsa -in private.key -pubout -out public.key</em> 这条命令的意思是：指定由(-in)私钥private.key生成公钥(-pubout)，并保存到名为public.key的文件中，参数<em>-in</em>及<em>-pubout</em>是必须的，而<em>-out</em>则跟私钥生成时的意义相同。<br>&#8195;&#8195;来看一下公钥的内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cat public.key</div><div class="line"></div><div class="line">-----BEGIN PUBLIC KEY-----</div><div class="line">MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALY3hztE11iplu8kIGOixQ9j7fueLEtp</div><div class="line">4nyIw3RivuSkI5ao7NS9P78TsH7H6LGJnlN2Ss/FU8BHWKLHwhB/wRECAwEAAQ==</div><div class="line">-----END PUBLIC KEY-----</div></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;至此，我们已经完整的获取了一对RSA算法密钥，可以使用它们对数据进行加解密了。<br>&#8195;&#8195;回到之前生成私钥时提到的私钥长度的问题。在RSA算法中，对于一个已经生成的私钥来说，它的长度决定了密文的长度，比如，1024参数生成的密钥加密一段明文数据后，得到的密文长度换算为字节长度是 1024/8 = 128，形象一点，是128个英文字母的长度，这是固定的，也就是说，无论你的明文数据长度是多少，用这个密钥加密生成的密文总是有128个字节那么长，这是由算法本身决定的。显然，当明文数据超过128个字节时，使用这个密钥加密，只有前128字节的数据被加密了，其余的会被舍弃，这种情况下，加密后的密文是无法解密还原为之前的明文的，算法会报错。所以，在使用RSA算法时，你需要评估一下你的明文数据，测量明文数据长度，留出冗余度(比如在java中实现RSA加密时，需要有11个字节的冗余，使用1024比特密钥，则依据公式 1024/8 - 11 = 117，即，明文不能超过117字节)，再决定你需要多长的密钥，从而生成正确的满足需求的密钥对。<br>&#8195;&#8195;可以意料到，因为算法的复杂，RSA加解密的开销代价是很大的，加解密的耗时，会随着密钥长度的增长及明文长度增长而比例增长，因此，RSA算法更适合用于微量数据的加解密。</p>
+<p>&#8195;&#8195;至此，我们已经完整的获取了一对RSA算法密钥，可以使用它们对数据进行加解密了。<br>&#8195;&#8195;回到之前生成私钥时提到的私钥长度的问题。在RSA算法中，对于一个已经生成的私钥来说，它的长度决定了密文的长度，比如，1024参数生成的密钥加密一段明文数据后，得到的密文长度换算为字节长度是 <em>1024/8 = 128</em>，形象一点，是128个英文字母的长度，这是固定的，也就是说，无论你的明文数据长度是多少，用这个密钥加密生成的密文总是也是最大有128个字节那么长，这是由算法本身决定的。显然，当明文数据超过128个字节时，使用这个密钥加密，只有前128字节的数据被加密了，其余的会被舍弃，这种情况下，加密后的密文是无法解密还原为之前的明文的，算法会报错。实际上，RSA算法规定密文需要11字节冗余，因此，最大可加密明文长度应该是 <em>1024/8 - 11 = 117</em>，即，明文不能超过117字节。所以，在使用RSA算法时，你需要评估一下你的明文数据，测量明文数据长度，留出冗余度，再决定你需要多长的密钥，从而生成正确的满足需求的密钥对。<br>&#8195;&#8195;可以意料到，因为算法的复杂，RSA加解密的开销代价是很大的，加解密的耗时，会随着密钥长度的增长及明文长度增长而比例增长，因此，RSA算法更适合用于微量数据的加解密。</p>
 
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cj79u8pv7000cg0uwe2vjyve5" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cj7a7k86q000clcuwghboppg8" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -127,6 +127,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/09/07/openssl-2-rsa-command-operation/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">较新的</strong>
+      <div class="article-nav-title">
+        
+          OpenSSL基础教程二：RSA命令行加解密
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/18/kotlin-android-tutorial-4/" id="article-nav-older" class="article-nav-link-wrap">
@@ -147,7 +156,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -157,7 +166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -167,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 10px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
     </div>
   </div>
 
@@ -176,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -187,6 +196,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
+          </li>
         
           <li>
             <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
@@ -202,10 +215,6 @@
         
           <li>
             <a href="/2017/08/13/kotlin-android-tutorial-2/">Kotlin基础教程第二章：Kotlin变量 (Android)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/10/kotlin-android-tutorial-1/">Kotlin基础教程第一章：在Android Studio中配置Kotlin环境</a>
           </li>
         
       </ul>

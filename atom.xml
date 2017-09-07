@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-09-07T02:31:56.167Z</updated>
+  <updated>2017-09-07T08:44:07.781Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>OpenSSL基础教程二：RSA命令行加解密</title>
+    <link href="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/"/>
+    <id>https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/</id>
+    <published>2017-09-07T08:44:07.000Z</published>
+    <updated>2017-09-07T08:44:07.781Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。</p>
+<h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div></pre></td></tr></table></figure></p>
+<ul>
+<li>意思是：RSA工具(rsautl)加密操作(-encrypt)，导入(-in)明文数据data.txt，导入密钥(-inkey)，声明密钥是公钥(-pubin)，加密后密文输出保存到(-out)data_en.txt文件中。</li>
+<li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。</li>
+</ul>
+<p>&#8195;&#8195;命令行无错误提示，即表明加密成功，来看看密文文件 <em>data_en.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat data_en.txt</div><div class="line">�W��</div><div class="line">����	u+�E�=J�w��	���� �n(W˯f�g<span class="string">'n�&lt;grHY����w�=jI�)M�.i</span></div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;我当然看不懂了！<br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">$ cat data_en.txt</div><div class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;我当然依然看不懂了，但明显，两次加密生成密文是不一样的，这也是RSA加密算法的重点优势体现，密文是动态的，安全性得到了提升。</p>
+<h4 id="三、私钥解密"><a href="#三、私钥解密" class="headerlink" title="三、私钥解密"></a>三、私钥解密</h4><p>&#8195;&#8195;前面我们已经得到了密文数据文件 <em>data_en.txt</em>，我们来使用私钥进行解密还原。命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -decrypt -in data_en.txt -inkey private.key -out data_de.txt</div></pre></td></tr></table></figure></p>
+<ul>
+<li>意思应该已经很好理解了：RSA工具解密操作(-decrypt)，导入密文数据文件data_en.txt，导入私钥private.key，默认密钥为私钥，解密后明文数据输出保存到 data_de.txt文件中。</li>
+</ul>
+<p>&#8195;&#8195;命令行无错误提示，即表明解密成功，来看看明文文件 <em>data_de.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cat data_de.txt</div><div class="line">Hello RSA</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;好了，是不是很有成就感？！</p>
+<h4 id="四、密钥长度问题验证"><a href="#四、密钥长度问题验证" class="headerlink" title="四、密钥长度问题验证"></a>四、密钥长度问题验证</h4><p>&#8195;&#8195;先来看看我们经过加解密过程得到的三个文件的大小<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ ll data.txt</div><div class="line">-rw-r--r-- 1 user 197121 10 Sep   7 15:20 data.txt</div><div class="line">$ ll data_en.txt</div><div class="line">-rw-r--r-- 1 user 197121 64 Sep   7 15:20 data_en.txt</div><div class="line">$ ll data_de.txt</div><div class="line">-rw-r--r-- 1 user 197121 10 Sep   7 15:21 data_de.txt</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;data.txt是10个字节，data_en.txt是64个字节，还原的的data_de.txt是10个字节，符合我们下面进行的公式计算。<br>&#8195;&#8195;以512比特长度的密钥用公式计算，<em>512/8 = 64</em>，即经过这个密钥加密后的密文长度(亦或大小)固定是64个字节，可加密的最大明文数据大小为 <em>512/8 - 11 = 53</em> 个字节，一个英文字母即一个字节。我们来验证一下，编辑data.txt，把 <em>Hello RSA</em> 替换为 <em>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</em>，保存后可以查看data.txt的大小，刚好53个字节。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ll data.txt</div><div class="line">-rw-r--r-- 1 user 197121 53 Sep   7 15:32 data.txt</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;对这个文件执行公钥加密操作，可以看到，是成功的，我们再来编辑这个文件，随意插入一个字母，保存，data.txt大小将变为54字节，再进行一次公钥加密操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div><div class="line">RSA operation error</div><div class="line">139970621331096:error:0406D06E:rsa routines:RSA_padding_add_PKCS1_type_2:data too large <span class="keyword">for</span> key size:rsa_pk1.c:153:</div></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;可见，加密失败，因为明文数据长度超过53字节了。要想对这么长的数据进行RSA加密，我们需要一个更大容量的密钥，留个作业，动手去生成一个1024比特长度密钥，来加密一个54字节长度的明文数据，验证一下，可以加深你对这个问题的理解。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h4&gt;&lt;p&gt;&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="OpenSSL" scheme="https://chuyao.github.io/tags/OpenSSL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenSSL基础教程一：RSA加解密算法密钥</title>
     <link href="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/</id>
     <published>2017-09-06T17:15:21.000Z</published>
-    <updated>2017-09-07T02:31:56.167Z</updated>
+    <updated>2017-09-07T06:52:07.667Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问<a href="https://www.openssl.org" target="_blank" rel="external">OpenSSL官方网站</a>及<a href="https://github.com/openssl/openssl" target="_blank" rel="external">OpenSSL开源代码库</a>。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。<br>&#8195;&#8195;2、RSA，即非对称加解密，加解密原理推荐参考<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">RSA算法原理（一）</a>及其系列文章。<br>&#8195;&#8195;3、OpenSSL作为知名的开源软件包，广泛被各大开源系统收录作为系统级软件包，比如主流版本的<a href="https://www.ubuntu.com" target="_blank" rel="external">Ubuntu</a>、<a href="https://www.centos.org" target="_blank" rel="external">CentOS</a>等Linux系操作系统，及闭源的<a href="https://www.apple.com/macos/sierra/" target="_blank" rel="external">MacOS</a>(即苹果操作系统，Unix系)，本文涉及的命令行操作均在Linux环境下进行，所以，基础的Linux操作系统知识是必须的。打开命令行工具，执行 <em>openssl version -a</em> 命令，可检测你的操作系统是否具备OpenSSL的执行环境。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ openssl version <span class="_">-a</span></div><div class="line"></div><div class="line">OpenSSL 0.9.8zh 14 Jan 2016</div><div class="line">built on: Jan 23 2017</div><div class="line">platform: darwin64-x86_64-llvm</div><div class="line">options:  bn(64,64) md2(int) rc4(ptr,char) des(idx,cisc,16,int) blowfish(idx) </div><div class="line">compiler: -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O3 -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN -DMD32_REG_T=int -DOPENSSL_NO_IDEA -DOPENSSL_PIC -DOPENSSL_THREADS -DZLIB -mmacosx-version-min=10.6</div><div class="line">OPENSSLDIR: <span class="string">"/System/Library/OpenSSL"</span></div></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;以上显示即正常。</p>
@@ -35,7 +76,7 @@
 <p>&#8195;&#8195;这才是它的真实面目，如果你接触过其它加密算法，应该对<em>modulus</em>、<em>exponent</em>不会感到陌生。</p>
 <h5 id="公钥的生成"><a href="#公钥的生成" class="headerlink" title="公钥的生成"></a>公钥的生成</h5><h6 id="RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥"><a href="#RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥" class="headerlink" title="RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥"></a><em>RSA算法密钥总是成对出现，先有私钥，再用私钥生成公钥</em></h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ openssl rsa -in private.key -pubout -out public.key</div><div class="line"></div><div class="line">writing RSA key</div></pre></td></tr></table></figure>
 <p>&#8195;&#8195;<em>openssl rsa -in private.key -pubout -out public.key</em> 这条命令的意思是：指定由(-in)私钥private.key生成公钥(-pubout)，并保存到名为public.key的文件中，参数<em>-in</em>及<em>-pubout</em>是必须的，而<em>-out</em>则跟私钥生成时的意义相同。<br>&#8195;&#8195;来看一下公钥的内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cat public.key</div><div class="line"></div><div class="line">-----BEGIN PUBLIC KEY-----</div><div class="line">MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALY3hztE11iplu8kIGOixQ9j7fueLEtp</div><div class="line">4nyIw3RivuSkI5ao7NS9P78TsH7H6LGJnlN2Ss/FU8BHWKLHwhB/wRECAwEAAQ==</div><div class="line">-----END PUBLIC KEY-----</div></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;至此，我们已经完整的获取了一对RSA算法密钥，可以使用它们对数据进行加解密了。<br>&#8195;&#8195;回到之前生成私钥时提到的私钥长度的问题。在RSA算法中，对于一个已经生成的私钥来说，它的长度决定了密文的长度，比如，1024参数生成的密钥加密一段明文数据后，得到的密文长度换算为字节长度是 1024/8 = 128，形象一点，是128个英文字母的长度，这是固定的，也就是说，无论你的明文数据长度是多少，用这个密钥加密生成的密文总是有128个字节那么长，这是由算法本身决定的。显然，当明文数据超过128个字节时，使用这个密钥加密，只有前128字节的数据被加密了，其余的会被舍弃，这种情况下，加密后的密文是无法解密还原为之前的明文的，算法会报错。所以，在使用RSA算法时，你需要评估一下你的明文数据，测量明文数据长度，留出冗余度(比如在java中实现RSA加密时，需要有11个字节的冗余，使用1024比特密钥，则依据公式 1024/8 - 11 = 117，即，明文不能超过117字节)，再决定你需要多长的密钥，从而生成正确的满足需求的密钥对。<br>&#8195;&#8195;可以意料到，因为算法的复杂，RSA加解密的开销代价是很大的，加解密的耗时，会随着密钥长度的增长及明文长度增长而比例增长，因此，RSA算法更适合用于微量数据的加解密。</p>
+<p>&#8195;&#8195;至此，我们已经完整的获取了一对RSA算法密钥，可以使用它们对数据进行加解密了。<br>&#8195;&#8195;回到之前生成私钥时提到的私钥长度的问题。在RSA算法中，对于一个已经生成的私钥来说，它的长度决定了密文的长度，比如，1024参数生成的密钥加密一段明文数据后，得到的密文长度换算为字节长度是 <em>1024/8 = 128</em>，形象一点，是128个英文字母的长度，这是固定的，也就是说，无论你的明文数据长度是多少，用这个密钥加密生成的密文总是也是最大有128个字节那么长，这是由算法本身决定的。显然，当明文数据超过128个字节时，使用这个密钥加密，只有前128字节的数据被加密了，其余的会被舍弃，这种情况下，加密后的密文是无法解密还原为之前的明文的，算法会报错。实际上，RSA算法规定密文需要11字节冗余，因此，最大可加密明文长度应该是 <em>1024/8 - 11 = 117</em>，即，明文不能超过117字节。所以，在使用RSA算法时，你需要评估一下你的明文数据，测量明文数据长度，留出冗余度，再决定你需要多长的密钥，从而生成正确的满足需求的密钥对。<br>&#8195;&#8195;可以意料到，因为算法的复杂，RSA加解密的开销代价是很大的，加解密的耗时，会随着密钥长度的增长及明文长度增长而比例增长，因此，RSA算法更适合用于微量数据的加解密。</p>
 ]]></content>
     
     <summary type="html">
