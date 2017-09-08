@@ -99,10 +99,7 @@
 <h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div></pre></td></tr></table></figure></p>
 <ul>
 <li>意思是：RSA工具(rsautl)加密操作(-encrypt)，导入(-in)明文数据data.txt，导入密钥(-inkey)，声明密钥是公钥(-pubin)，加密后密文输出保存到(-out)data_en.txt文件中。</li>
-<li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。</li>
-</ul>
-<p>&#8195;&#8195;命令行无错误提示，即表明加密成功，来看看密文文件 <em>data_en.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat data_en.txt</div><div class="line">�W��</div><div class="line">����	u+�E�=J�w��	���� �n(W˯f�g<span class="string">'n�&lt;grHY����w�=jI�)M�.i</span></div></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;我当然看不懂了！</p>
+<li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。</li></ul>
         
           <p class="article-more-link">
             <a href="/2017/09/07/openssl-2-rsa-command-operation/#more">Read more</a>
@@ -112,7 +109,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cj7b8mxai000g9ouw23xsqryx" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cj7b913cb000jw0uwymtxzqj2" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -163,7 +160,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cj7b8mxaa000c9ouwbvrpncti" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cj7b913bz000aw0uw13flisyc" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -221,7 +218,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cj7b8mx9y00079ouwdt0dxy1o" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cj7b913bv0007w0uwb58lyjub" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -305,7 +302,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cj7b8mx9t00069ouwyihwes84" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cj7b913bt0006w0uwenquws0c" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -361,7 +358,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cj7b8mx9c00059ouwr0jg9447" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cj7b913b50002w0uwghuadmrc" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -413,7 +410,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj7b8mx8x00029ouwxo9emg5v" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cj7b913bj0005w0uwbwjv0rkq" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -467,7 +464,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj7b8mxa5000a9ouwo083up11" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cj7b913c2000cw0uwep2xj96g" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -525,7 +522,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj7b8mxam000j9ouwss1wlwgl" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cj7b913c8000gw0uwg8djdw97" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
@@ -573,7 +570,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj7b8mxax000n9ouw86xta5bj" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cj7b913cf000nw0uwozfhuped" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
@@ -626,7 +623,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj7b8mx8i00009ouwuadmuyj2" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cj7b913aw0000w0uwmb090gfw" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
