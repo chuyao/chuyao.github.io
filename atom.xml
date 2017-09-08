@@ -142,9 +142,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -403,9 +403,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -414,7 +414,7 @@
     <link href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/"/>
     <id>https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/</id>
     <published>2017-08-13T09:31:07.000Z</published>
-    <updated>2017-09-08T02:26:07.569Z</updated>
+    <updated>2017-09-08T02:32:01.370Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;这篇文章，你将学习到Kotlin变量的相关知识。<br>&#8195;&#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。</p>
 <h5 id="在Android-Studio上配置Kotlin开发环境"><a href="#在Android-Studio上配置Kotlin开发环境" class="headerlink" title="在Android Studio上配置Kotlin开发环境"></a><em><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">在Android Studio上配置Kotlin开发环境</a></em></h5><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><p>&#8195;&#8195;在Kotlin中，<em>一切都是对象</em></p>
@@ -451,12 +451,12 @@
     
     </summary>
     
-      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
     
-    
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -465,7 +465,7 @@
     <link href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/"/>
     <id>https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/</id>
     <published>2017-08-10T07:36:15.000Z</published>
-    <updated>2017-09-08T02:25:59.405Z</updated>
+    <updated>2017-09-08T02:32:13.836Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;如果你之前了解过Kotlin，认为它是一门很强大的语言，那么你应该尝试去学习和使用它，这就是你来到这里的原因。这篇文章，我们将学习如何配置Android Studio下的Kotlin开发环境。<br>&#8195;&#8195;启动Android Studio，新建一个项目工程，如下图如示<br><img src="/2017/08/10/kotlin-android-tutorial-1/1.png" alt="新工程 + Kotlin支持(需要手动勾选)"><br>&#8195;&#8195;按照下一步提示创建工程并等待创建过程完成。</p>
 <p>&#8195;&#8195;<em>对于Android Studio 2.x版本，你需要预先安装Kotlin插件，安装步骤为“File -&gt; Settings -&gt; Plugin”，在弹出的对话框搜索栏内搜索“Kotlin”，安装并重启你的Android Studio。</em><br><img src="/2017/08/10/kotlin-android-tutorial-1/1_1.png" alt="2.x版本kotlin插件安装"></p>
@@ -499,12 +499,12 @@
     
     </summary>
     
-      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
     
-    
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -716,9 +716,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
