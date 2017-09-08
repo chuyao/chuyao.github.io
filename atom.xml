@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-09-08T02:13:47.142Z</updated>
+  <updated>2017-09-08T02:21:33.884Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/</id>
     <published>2017-09-07T08:44:07.000Z</published>
-    <updated>2017-09-08T02:13:47.142Z</updated>
+    <updated>2017-09-08T02:21:33.884Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。</p>
 <h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div></pre></td></tr></table></figure></p>
@@ -66,7 +66,7 @@
     <link href="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/</id>
     <published>2017-09-06T17:15:21.000Z</published>
-    <updated>2017-09-07T06:52:07.667Z</updated>
+    <updated>2017-09-08T02:21:31.640Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问<a href="https://www.openssl.org" target="_blank" rel="external">OpenSSL官方网站</a>及<a href="https://github.com/openssl/openssl" target="_blank" rel="external">OpenSSL开源代码库</a>。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。<br>&#8195;&#8195;2、RSA，即非对称加解密，加解密原理推荐参考<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">RSA算法原理（一）</a>及其系列文章。<br>&#8195;&#8195;3、OpenSSL作为知名的开源软件包，广泛被各大开源系统收录作为系统级软件包，比如主流版本的<a href="https://www.ubuntu.com" target="_blank" rel="external">Ubuntu</a>、<a href="https://www.centos.org" target="_blank" rel="external">CentOS</a>等Linux系操作系统，及闭源的<a href="https://www.apple.com/macos/sierra/" target="_blank" rel="external">MacOS</a>(即苹果操作系统，Unix系)，本文涉及的命令行操作均在Linux环境下进行，所以，基础的Linux操作系统知识是必须的。打开命令行工具，执行 <em>openssl version -a</em> 命令，可检测你的操作系统是否具备OpenSSL的执行环境。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ openssl version <span class="_">-a</span></div><div class="line"></div><div class="line">OpenSSL 0.9.8zh 14 Jan 2016</div><div class="line">built on: Jan 23 2017</div><div class="line">platform: darwin64-x86_64-llvm</div><div class="line">options:  bn(64,64) md2(int) rc4(ptr,char) des(idx,cisc,16,int) blowfish(idx) </div><div class="line">compiler: -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O3 -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN -DMD32_REG_T=int -DOPENSSL_NO_IDEA -DOPENSSL_PIC -DOPENSSL_THREADS -DZLIB -mmacosx-version-min=10.6</div><div class="line">OPENSSLDIR: <span class="string">"/System/Library/OpenSSL"</span></div></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;以上显示即正常。</p>
@@ -142,9 +142,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
@@ -403,9 +403,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
@@ -454,9 +454,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
@@ -502,9 +502,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
@@ -647,7 +647,7 @@
     <link href="https://chuyao.github.io/2017/06/27/interview-in-my-mind/"/>
     <id>https://chuyao.github.io/2017/06/27/interview-in-my-mind/</id>
     <published>2017-06-27T07:19:38.000Z</published>
-    <updated>2017-08-01T06:54:43.409Z</updated>
+    <updated>2017-09-08T02:22:24.718Z</updated>
     
     <content type="html"><![CDATA[<p>转载自SegmentFault <a href="https://segmentfault.com/a/1190000008682444" title="我眼中的面试" target="_blank" rel="external">我自己的文章</a></p>
 <p>&#8195;&#8195;最近在给公司招Android开发人员，面向两个方向，Framework和App，近一个月的时间以来，总体特点是Framework方向近乎无人问津，而App方向则简历“泛滥”，想招个靠谱的伙伴真的不容易。最近的工作时常被频繁的面试安排打断，面试之余，想总结一下这段时间的感受。尽量从面试流程的各个环节都有一些涉及，当作回忆也好，经验也罢。当作给自己的沉淀吧。</p>
@@ -713,12 +713,12 @@
     
     </summary>
     
-      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+      <category term="Tech_" scheme="https://chuyao.github.io/categories/Tech/"/>
     
-    
-      <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
     
   </entry>
   
