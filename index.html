@@ -96,26 +96,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>git作为版本管理工具，其功能之强大，已无需赘述。一般情况下，我们接触到的git都指远程操作，与远程git服务器协作，完成版本迭代管理。如果没有服务器，是否也能使用git呢？当然可以，这期文章，让我们一起来把git和我们的代码搬到U盘上，建立一个真正属于自己而又移动的“私有云”。</p>
-<h4 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h4><ol>
-<li>安装好的git环境，参见<a href="https://git-scm.com/" target="_blank" rel="external">git官网</a>。</li>
-<li>U盘一个，大小容量没有严格要求。<h4 id="三、命令行操作"><a href="#三、命令行操作" class="headerlink" title="三、命令行操作"></a>三、命令行操作</h4></li>
-<li>在U盘上创建空仓库test.git(我的U盘盘符在PC端是I盘)。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /I</div><div class="line">$ mkdir <span class="built_in">test</span></div><div class="line">$ <span class="built_in">cd</span> <span class="built_in">test</span></div><div class="line">$ git init --bare</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h4 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h4><p>1、安装好的git环境，参见<a href="https://git-scm.com/" target="_blank" rel="external">git官网</a>。<br>2、U盘一个，大小容量没有严格要求。</p>
+<h4 id="三、命令行操作"><a href="#三、命令行操作" class="headerlink" title="三、命令行操作"></a>三、命令行操作</h4><p>1、在U盘上创建空仓库test.git(我的U盘盘符在PC端是I盘)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /I</div><div class="line">$ mkdir <span class="built_in">test</span></div><div class="line">$ <span class="built_in">cd</span> <span class="built_in">test</span></div><div class="line">$ git init --bare</div></pre></td></tr></table></figure>
 <p>得到如下显示即表明git仓库创建成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Initialized empty Git repository <span class="keyword">in</span> I:/<span class="built_in">test</span>/</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>现有git工程与U盘仓库关联(在git工程根目录下执行)</p>
+<p>2、现有git工程与U盘仓库关联(在git工程根目录下执行)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add usb /i/<span class="built_in">test</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>版本管理，仓库有了，剩下就是推送和拉取文件了<br>$ git push usb master<br>$ git pull usb master</p>
-</li>
-</ol>
+<p>3、版本管理，仓库有了，剩下就是推送和拉取文件了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git push usb master</div><div class="line">$ git pull usb master</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/11/17/git-usb/" data-id="cja9dh9dc000030uwkk357tqe" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/11/17/git-usb/" data-id="cja9dvnw8000578uw4j8upn1m" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -167,7 +161,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cja9dh9hf000w30uwzc9ztjtg" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cja9dvnxe000p78uw8sl26102" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -218,7 +212,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cja9dh9hc000t30uwkq6aafo8" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cja9dvnx8000m78uwt812kfvf" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -276,7 +270,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cja9dh9h5000p30uw8a7vriuv" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cja9dvnx2000h78uw5mepka25" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -360,7 +354,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cja9dh9gx000l30uwa991wch9" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cja9dvnwv000d78uwhm6siwyn" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -416,7 +410,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cja9dh9f8000530uwbjdvvsah" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cja9dvnwr000b78uw7p9csavo" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -468,7 +462,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cja9dh9hn001630uwd58d17kz" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cja9dvnwm000778uwebjsw9x1" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -522,7 +516,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cja9dh9hj000z30uwja3tfe1x" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cja9dvnx5000j78uwv834l05e" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
@@ -580,7 +574,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cja9dh9hp001a30uwdhxwm8qe" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cja9dvnxp000w78uwkhnimqyd" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
@@ -628,7 +622,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cja9dh9hr001c30uwlkwf7d5o" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cja9dvnxk000t78uwfp2n52w0" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
