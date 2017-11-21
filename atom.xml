@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
-  <updated>2017-09-08T02:34:32.030Z</updated>
+  <updated>2017-11-20T09:25:03.833Z</updated>
   <id>https://chuyao.github.io/</id>
   
   <author>
@@ -16,11 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在U盘上建立git仓库，移动的“私有云”</title>
+    <link href="https://chuyao.github.io/2017/11/17/git-usb/"/>
+    <id>https://chuyao.github.io/2017/11/17/git-usb/</id>
+    <published>2017-11-17T06:35:23.000Z</published>
+    <updated>2017-11-20T09:25:03.833Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>git作为版本管理工具，其功能之强大，已无需赘述。一般情况下，我们接触到的git都指远程操作，与远程git服务器协作，完成版本迭代管理。如果没有服务器，是否也能使用git呢？当然可以，这期文章，让我们一起来把git和我们的代码搬到U盘上，建立一个真正属于自己而又移动的“私有云”。</p>
+<h4 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h4><ol>
+<li>安装好的git环境，参见<a href="https://git-scm.com/" target="_blank" rel="external">git官网</a>。</li>
+<li>U盘一个，大小容量没有严格要求。<h4 id="三、命令行操作"><a href="#三、命令行操作" class="headerlink" title="三、命令行操作"></a>三、命令行操作</h4></li>
+<li>在U盘上创建空仓库test.git(我的U盘盘符在PC端是I盘)。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /I</div><div class="line">$ mkdir <span class="built_in">test</span></div><div class="line">$ <span class="built_in">cd</span> <span class="built_in">test</span></div><div class="line">$ git init --bare</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>得到如下显示即表明git仓库创建成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Initialized empty Git repository <span class="keyword">in</span> I:/<span class="built_in">test</span>/</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>现有git工程与U盘仓库关联(在git工程根目录下执行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add usb /i/<span class="built_in">test</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>版本管理，仓库有了，剩下就是推送和拉取文件了<br>$ git push usb master<br>$ git pull usb master</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、前言&quot;&gt;&lt;a href=&quot;#一、前言&quot; class=&quot;headerlink&quot; title=&quot;一、前言&quot;&gt;&lt;/a&gt;一、前言&lt;/h4&gt;&lt;p&gt;git作为版本管理工具，其功能之强大，已无需赘述。一般情况下，我们接触到的git都指远程操作，与远程git服务器协作，完成版
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="git" scheme="https://chuyao.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenSSL基础教程二：RSA命令行加解密</title>
     <link href="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/</id>
     <published>2017-09-07T08:44:07.000Z</published>
-    <updated>2017-09-08T02:34:32.030Z</updated>
+    <updated>2017-11-17T06:57:48.957Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。</p>
 <h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rsautl -encrypt -in data.txt -inkey public.key -pubin -out data_en.txt</div></pre></td></tr></table></figure></p>
@@ -54,7 +91,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="OpenSSL" scheme="https://chuyao.github.io/tags/OpenSSL/"/>
@@ -66,7 +103,7 @@
     <link href="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/</id>
     <published>2017-09-06T17:15:21.000Z</published>
-    <updated>2017-09-08T02:34:26.237Z</updated>
+    <updated>2017-11-17T06:57:43.404Z</updated>
     
     <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;1、关于OpenSSL的历史及应用领域，这里不作过多阐述，它是一个开源的安全套接字层密码库，由此你可以大致知道它的用处，想更多的了解，请访问<a href="https://www.openssl.org" target="_blank" rel="external">OpenSSL官方网站</a>及<a href="https://github.com/openssl/openssl" target="_blank" rel="external">OpenSSL开源代码库</a>。这里，主要讲解一下OpenSSL在RSA加密情景下的应用，如何生成RSA算法密钥及密钥的相关知识。<br>&#8195;&#8195;2、RSA，即非对称加解密，加解密原理推荐参考<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">RSA算法原理（一）</a>及其系列文章。<br>&#8195;&#8195;3、OpenSSL作为知名的开源软件包，广泛被各大开源系统收录作为系统级软件包，比如主流版本的<a href="https://www.ubuntu.com" target="_blank" rel="external">Ubuntu</a>、<a href="https://www.centos.org" target="_blank" rel="external">CentOS</a>等Linux系操作系统，及闭源的<a href="https://www.apple.com/macos/sierra/" target="_blank" rel="external">MacOS</a>(即苹果操作系统，Unix系)，本文涉及的命令行操作均在Linux环境下进行，所以，基础的Linux操作系统知识是必须的。打开命令行工具，执行 <em>openssl version -a</em> 命令，可检测你的操作系统是否具备OpenSSL的执行环境。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ openssl version <span class="_">-a</span></div><div class="line"></div><div class="line">OpenSSL 0.9.8zh 14 Jan 2016</div><div class="line">built on: Jan 23 2017</div><div class="line">platform: darwin64-x86_64-llvm</div><div class="line">options:  bn(64,64) md2(int) rc4(ptr,char) des(idx,cisc,16,int) blowfish(idx) </div><div class="line">compiler: -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O3 -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN -DMD32_REG_T=int -DOPENSSL_NO_IDEA -DOPENSSL_PIC -DOPENSSL_THREADS -DZLIB -mmacosx-version-min=10.6</div><div class="line">OPENSSLDIR: <span class="string">"/System/Library/OpenSSL"</span></div></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;以上显示即正常。</p>
@@ -93,7 +130,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="OpenSSL" scheme="https://chuyao.github.io/tags/OpenSSL/"/>
@@ -105,7 +142,7 @@
     <link href="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/"/>
     <id>https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/</id>
     <published>2017-08-18T07:54:36.000Z</published>
-    <updated>2017-09-08T02:34:16.078Z</updated>
+    <updated>2017-11-17T06:57:32.315Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;本篇文章，让我们来学习Kotlin类及其属性。<br>&#8195;&#8195;欢迎你回头学习之前的文章，可以让你更好的继续学习Kotlin知识。</p>
 <h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>&#8195;&#8195;如果你曾学习过任何一门“面向对象编程”语言，你将对类及其属性很熟悉。</p>
@@ -139,7 +176,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
@@ -153,7 +190,7 @@
     <link href="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/"/>
     <id>https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/</id>
     <published>2017-08-15T13:55:47.000Z</published>
-    <updated>2017-09-08T02:34:10.160Z</updated>
+    <updated>2017-11-17T06:57:27.054Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。<br>&#8195;&#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。</p>
 <h5 id="第一章：在Android-Studio中配置Kotlin环境"><a href="#第一章：在Android-Studio中配置Kotlin环境" class="headerlink" title="第一章：在Android Studio中配置Kotlin环境"></a><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">第一章：在Android Studio中配置Kotlin环境</a></h5><h5 id="第二章：Kotlin变量-Android"><a href="#第二章：Kotlin变量-Android" class="headerlink" title="第二章：Kotlin变量 (Android)"></a><a href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/">第二章：Kotlin变量 (Android)</a></h5><h4 id="二进制运算符"><a href="#二进制运算符" class="headerlink" title="二进制运算符"></a>二进制运算符</h4><p>&#8195;&#8195;在运算符的使用上，Kotlin是一门强大的语言。在其它计算机语言如Java中，是不允许用户在非原始类型数据间使用算术运算符的。你想对ArrayList使用“<em>+</em>”，是不允许的。但Kotlin可以，Kotlin提供了二进制运算符相对应的可重载的方法名。</p>
@@ -400,7 +437,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
@@ -414,7 +451,7 @@
     <link href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/"/>
     <id>https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/</id>
     <published>2017-08-13T09:31:07.000Z</published>
-    <updated>2017-09-08T02:32:01.370Z</updated>
+    <updated>2017-11-17T06:57:21.784Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;这篇文章，你将学习到Kotlin变量的相关知识。<br>&#8195;&#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。</p>
 <h5 id="在Android-Studio上配置Kotlin开发环境"><a href="#在Android-Studio上配置Kotlin开发环境" class="headerlink" title="在Android Studio上配置Kotlin开发环境"></a><em><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">在Android Studio上配置Kotlin开发环境</a></em></h5><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><p>&#8195;&#8195;在Kotlin中，<em>一切都是对象</em></p>
@@ -451,7 +488,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
@@ -465,7 +502,7 @@
     <link href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/"/>
     <id>https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/</id>
     <published>2017-08-10T07:36:15.000Z</published>
-    <updated>2017-09-08T02:32:13.836Z</updated>
+    <updated>2017-11-17T06:57:15.008Z</updated>
     
     <content type="html"><![CDATA[<p>&#8195;&#8195;如果你之前了解过Kotlin，认为它是一门很强大的语言，那么你应该尝试去学习和使用它，这就是你来到这里的原因。这篇文章，我们将学习如何配置Android Studio下的Kotlin开发环境。<br>&#8195;&#8195;启动Android Studio，新建一个项目工程，如下图如示<br><img src="/2017/08/10/kotlin-android-tutorial-1/1.png" alt="新工程 + Kotlin支持(需要手动勾选)"><br>&#8195;&#8195;按照下一步提示创建工程并等待创建过程完成。</p>
 <p>&#8195;&#8195;<em>对于Android Studio 2.x版本，你需要预先安装Kotlin插件，安装步骤为“File -&gt; Settings -&gt; Plugin”，在弹出的对话框搜索栏内搜索“Kotlin”，安装并重启你的Android Studio。</em><br><img src="/2017/08/10/kotlin-android-tutorial-1/1_1.png" alt="2.x版本kotlin插件安装"></p>
@@ -499,7 +536,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
@@ -513,7 +550,7 @@
     <link href="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/"/>
     <id>https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/</id>
     <published>2017-07-31T06:22:18.000Z</published>
-    <updated>2017-09-08T02:34:20.944Z</updated>
+    <updated>2017-11-17T06:57:37.617Z</updated>
     
     <content type="html"><![CDATA[<h5 id="原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站"><a href="#原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站" class="headerlink" title="原文《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》，原文作者：Doug Lynch，源自 xda-developers.com网站"></a><center><em>原文<a href="https://www.xda-developers.com/nexus-5x-bootloop-fix-boot-phone/" target="_blank" rel="external">《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》</a>，原文作者：<a href="https://www.xda-developers.com/author/doug-lynch/" target="_blank" rel="external">Doug Lynch</a>，源自 <a href="https://www.xda-developers.com/" target="_blank" rel="external">xda-developers.com</a>网站</em></center></h5><p>&#8195;&#8195;你的LG/Google <a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>手机停止启动了吗？或者是陷入到了无休止的启动循环里了？<br>&#8195;&#8195;这种现象我们常称之为“循环启动”，起因则有很多种。大多数时候，可以通过刷入原厂固件或者恢复出厂设置来解决循环启动问题，但当遇到硬件循环启动时，通常我们并不能采取什么有效的办法，除了退货。如果你的Google Nexus 5X手机无法启动，而你尝试修复但并没有什么卵用，那么你要相信，你不是唯一一个碰到这种情况的人。Nexus 5X循环启动问题在社区里正不断被诟病，但鲜有新的解决方案。</p>
 <h3 id="Nexus-5X循环启动解决-背景"><a href="#Nexus-5X循环启动解决-背景" class="headerlink" title="Nexus 5X循环启动解决 - 背景"></a>Nexus 5X循环启动解决 - 背景</h3><p>&#8195;&#8195;过去几年里，LG旗下的智能手机在循环启动问题上有点名声。其中一个问题，起初只在<a href="https://forum.xda-developers.com/g4" target="_blank" rel="external">LG G4</a>手机上发现的问题正越来越多的出现在它发布的每一款新设备上。社区里最近在讨论<em><a href="https://www.xda-developers.com/nexus-6p-bootloop-fix/" target="_blank" rel="external">解决Nexus 6P循环启动问题</a></em>，这个设备由华为出品，而现在，一个在<a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>上可行的办法出现了，这个办法派生自我们之前写的一些引导方案。<br>&#8195;&#8195;这些解决方案有一个共同点，正表明由高通仓促发布的骁龙808/810芯片，随着使用时间的推移，正在达到退化并损坏的时候了。<em><a href="https://www.xda-developers.com/opinion-the-810-held-back-a-generation-with-deliberate-apologism-damage-control/" target="_blank" rel="external">骁龙810发热问题</a></em>都已经老生常谈了，但是，似乎808芯片也存在相同的问题，将导致设备循环启动。LG起初承认了<em><a href="https://www.xda-developers.com/xda-external-link/lg-admits-g4-bootloop-problem-is-a-hardware-fault-will-repair-affected-devices/" target="_blank" rel="external">LG G4循环启动问题确实和硬件有关</a></em>，但从未提供更多深入的信息。<br>&#8195;&#8195;一些质疑认为是焊锡的问题，在设备的使用过程中，在经历多次的加热和冷却后，焊锡会破裂。不管是否是真因，我们还是不知道问题的背后是什么，但是这个办法看起来会对Nexus 5X循环启动的问题起效。今天我们带来一个引导，真正的帮助你解决Nexus 5X循环启动问题。这则帖子末尾的讨论链接表明这个办法是未经测试的，社区里的许多用户已经报告了用这个办法可以成功。<br>&#8195;&#8195;一如既往，你可以使这个方法多样化。</p>
@@ -557,7 +594,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
@@ -573,7 +610,7 @@
     <link href="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/"/>
     <id>https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/</id>
     <published>2017-07-11T06:02:57.000Z</published>
-    <updated>2017-09-08T02:34:36.947Z</updated>
+    <updated>2017-11-17T06:57:54.174Z</updated>
     
     <content type="html"><![CDATA[<p>先来看个<a href="https://nodejs.org/en/about/" target="_blank" rel="external">官方Hello World</a>，几行代码即可搭建一个服务器。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</div><div class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  res.statusCode = <span class="number">200</span>;</div><div class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -612,7 +649,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Node.js" scheme="https://chuyao.github.io/tags/Node-js/"/>
@@ -647,7 +684,7 @@
     <link href="https://chuyao.github.io/2017/06/27/interview-in-my-mind/"/>
     <id>https://chuyao.github.io/2017/06/27/interview-in-my-mind/</id>
     <published>2017-06-27T07:19:38.000Z</published>
-    <updated>2017-09-08T02:34:01.083Z</updated>
+    <updated>2017-11-17T06:57:08.632Z</updated>
     
     <content type="html"><![CDATA[<p>转载自SegmentFault <a href="https://segmentfault.com/a/1190000008682444" title="我眼中的面试" target="_blank" rel="external">我自己的文章</a></p>
 <p>&#8195;&#8195;最近在给公司招Android开发人员，面向两个方向，Framework和App，近一个月的时间以来，总体特点是Framework方向近乎无人问津，而App方向则简历“泛滥”，想招个靠谱的伙伴真的不容易。最近的工作时常被频繁的面试安排打断，面试之余，想总结一下这段时间的感受。尽量从面试流程的各个环节都有一些涉及，当作回忆也好，经验也罢。当作给自己的沉淀吧。</p>
@@ -713,7 +750,7 @@
     
     </summary>
     
-      <category term="IT" scheme="https://chuyao.github.io/categories/IT/"/>
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
