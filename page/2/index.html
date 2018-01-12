@@ -69,6 +69,112 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-simple-api-server-with-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/11/simple-api-server-with-nodejs/" class="article-date">
+  <time datetime="2017-07-11T06:02:57.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/11/simple-api-server-with-nodejs/">一个简单的Node.js接口服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来看个<a href="https://nodejs.org/en/about/" target="_blank" rel="external">官方Hello World</a>，几行代码即可搭建一个服务器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</div><div class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  res.statusCode = <span class="number">200</span>;</div><div class="line">  res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, hostname, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>十分简洁，只要有点javascript语法知识，就能看懂。</p>
+<p>当然，并不是所看到的那么简单，要让这几行代码“简单”起来，需要依赖于一个安装好的Node环境，关于Node环境安装，不想赘述太多，网上的教程一大堆，这里简单总结一下：</p>
+<ol>
+<li>Windows系统环境<br>下载<a href="https://nodejs.org/en/download/" target="_blank" rel="external">官方安装源</a>安装即可；</li>
+<li>Linux系统环境<br>推荐使用<a href="https://github.com/creationix/nvm/blob/master/README.md#install-script" target="_blank" rel="external">nvm</a>安装及管理node版本，当然，也可以访问上面提到的官方安装源，下载安装。</li>
+</ol>
+<p>请尽量安装使用LTS版本，经过上边的步骤，就可以如开头所说的，快速搭建一个简单服务器了。</p>
+<p>下边进入正题，先说一个场景，一个客户端开发人员，需要对接口进行测试，需要接口假数据，真的会有一些开发人员说：“没有数据我开发不了！”，而碰巧后端同事又还没空开发接口、做假数据，怎么办？求人不如求己！具体到开发案例场景，客户端开发需要一个升级检查功能(一般包含两部分，版本检查，高版本文件下载)，针对这个场景，今天用node.js来实现解决方案。</p>
+<p>为了最大程度的简单，这次使用<a href="http://expressjs.com/" target="_blank" rel="external">Express</a>，一个目前非常流行的基于Node.js的Web应用开发框架来实现，帮助我们处理http请求及请求路由的简单实现。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/11/simple-api-server-with-nodejs/#more">Read more</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/07/11/simple-api-server-with-nodejs/" data-id="cjcbkdhcj000v0suwwze07cu9" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-the-disappearing-of-tradition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/06/the-disappearing-of-tradition/" class="article-date">
+  <time datetime="2017-07-06T08:01:01.000Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Life/">Life</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/the-disappearing-of-tradition/">消失的传统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#8195;&#8195;3月30日，农历三月三，对壮族人来说，一个传统的节日，叔公“选择”在这天离世。作为孙辈的我在惊闻噩耗第一时间往家里赶，希望能赶上为叔公送行，无奈路途遥远，路上耽误的一天时间造就了一生的遗憾。4月1日快中午到家时，看到父亲，哥哥都在自家里，我知道我回来晚了（叔公已在我到家前三个小时出殡了），下午和父亲回叔公家帮忙处理丧事善后的事情，见到了婶婆，婶婆有些憔悴但仪态平静，见到我时惊了一下，可能是没想到我能回来吧，没等我先开口便叫了我：“二，你也回来啦！”，我迎上去抓住婶婆的手：“婶婆，我回来晚了！”，婶婆拍一下我的手背：“回来了就好！”<br>&#8195;&#8195;叔公晚年失明，近些年只能待在家里，很少出门，去年中秋节是我最后一次见到叔公，那时感觉叔公精神状态还不错，听说我回来看望他，他挺高兴的，叔公说听到声音还能认出是我。虽然看不见，但叔公在家里活动时拒绝家人的搀扶指引，自己扶着墙壁前进，凭着记忆尽可能自理，仿佛他在这个世界里，并没有和失明前有什么区别。然而，那次也是近些年我和叔公为数不多的见面机会之一，这些年在外求学、工作、生活，在老家待的时间很少，每次回家也近乎匆忙，没有好好探望家里的老人们，那次见到叔公就让我感叹岁月的无情，心中也充满了愧疚。<br>&#8195;&#8195;叔公在我的印象里，极其严肃，似乎从不开玩笑；“脾气暴躁”，经常批评自己家人、家族里的人，提醒大家不要忘了家族的规矩、传统，不对的地方总是不留情面的，对家族里的小孩也是一脸严肃，下河玩水摸鱼、上山钻洞摸鸟，让叔公碰到了总要呵斥我们贪玩，其实都是在担心我们的安全；叔公几乎是是家族里威望最高的人，他利用这份威望，和家族里的其它长者一起，维系起大家族几十号人口的关系，丧事喜事号召大家一起出工出力，清明节号召一起祭拜祖上，调解各小家中的家庭矛盾。小时候，很喜欢跟着大人们去叔公参加“家族会议”，听叔公在“家族会议”上给大家“训话”，更多的，是想听那一辈老人们的故事，每次都觉得津津有味。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/06/the-disappearing-of-tradition/#more">Read more</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/07/06/the-disappearing-of-tradition/" data-id="cjcbkdhcl000y0suwz02wk8ct" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-interview-in-my-mind" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/27/interview-in-my-mind/" class="article-date">
@@ -110,7 +216,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cjadbzhft000258uwjo0o12i7" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/06/27/interview-in-my-mind/" data-id="cjcbkdhbb00060suwwpabcc8k" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
@@ -158,7 +264,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cjadbzhhr000p58uw1de26u64" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/05/16/tomylove/" data-id="cjcbkdhco00120suw253b8nj4" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emotion/">Emotion</a></li></ul>
@@ -183,7 +289,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">10</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -193,7 +299,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -212,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -225,6 +331,14 @@
       <ul>
         
           <li>
+            <a href="/2018/01/07/orangepi-pch3-system-customization/">OrangePi-PCH3安卓系统定制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-source-compile/">OrangePi-PCH3安卓源码编译</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/17/git-usb/">在U盘上建立git仓库，移动的“私有云”</a>
           </li>
         
@@ -234,14 +348,6 @@
         
           <li>
             <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/18/kotlin-android-tutorial-4/">Kotlin基础教程第四章：Kotlin类 (Android)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/15/kotlin-android-tutorial-3/">Kotlin基础教程第三章：Kotlin运算符 (Android)</a>
           </li>
         
       </ul>
@@ -258,7 +364,7 @@
         <div class="outer">
           <div id="footer-info" class="inner">
             &copy;
-            2017
+            2018
               Allen Shi<br>
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
                   <span id="busuanzi_container_site_pv" style='display:none'>

@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2017 | Allen&#39;s Blog</title>
+  <title>OrangePi-PCH3安卓系统定制 | Allen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Allen&#39;s Blog">
-<meta property="og:url" content="https://chuyao.github.io/archives/2017/page/2/index.html">
+  <meta name="description" content="一、USB调试开放1、修改USB0配置 /lichee/tools/pack/chips/sun8iw7p1/configs/dolphin-p1/sys_config.fex [usbc0]usb_used                = 1usb_port_type         = 0    // 0:device only; 1:host only; 2:OTG，默认是1usb_det">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OrangePi-PCH3安卓系统定制">
+<meta property="og:url" content="https://chuyao.github.io/2018/01/07/orangepi-pch3-system-customization/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="一、USB调试开放1、修改USB0配置 /lichee/tools/pack/chips/sun8iw7p1/configs/dolphin-p1/sys_config.fex [usbc0]usb_used                = 1usb_port_type         = 0    // 0:device only; 1:host only; 2:OTG，默认是1usb_det">
+<meta property="og:updated_time" content="2018-01-12T06:49:12.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Allen&#39;s Blog">
+<meta name="twitter:title" content="OrangePi-PCH3安卓系统定制">
+<meta name="twitter:description" content="一、USB调试开放1、修改USB0配置 /lichee/tools/pack/chips/sun8iw7p1/configs/dolphin-p1/sys_config.fex [usbc0]usb_used                = 1usb_port_type         = 0    // 0:device only; 1:host only; 2:OTG，默认是1usb_det">
   
     <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
   
@@ -67,63 +72,64 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/27/interview-in-my-mind/" class="archive-article-date">
-  <time datetime="2017-06-27T07:19:38.000Z" itemprop="datePublished">6月 27</time>
+        <section id="main"><article id="post-orangepi-pch3-system-customization" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/07/orangepi-pch3-system-customization/" class="article-date">
+  <time datetime="2018-01-07T07:09:45.000Z" itemprop="datePublished">2018-01-07</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/interview-in-my-mind/">我眼中的面试 (转)</a>
+    <h1 class="article-title" itemprop="name">
+      OrangePi-PCH3安卓系统定制
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/16/tomylove/" class="archive-article-date">
-  <time datetime="2017-05-15T16:10:49.000Z" itemprop="datePublished">5月 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/tomylove/">致我的爱</a>
-    </h1>
-  
+        <h4 id="一、USB调试开放"><a href="#一、USB调试开放" class="headerlink" title="一、USB调试开放"></a>一、USB调试开放</h4><p>1、修改USB0配置 /lichee/tools/pack/chips/sun8iw7p1/configs/dolphin-p1/sys_config.fex</p>
+<p>[usbc0]<br>usb_used                = 1<br>usb_port_type         = 0    // 0:device only; 1:host only; 2:OTG，默认是1<br>usb_detect_type     = 0</p>
+<p>2、重复lichee编译<br>3、pack</p>
+<h4 id="二、网络调试开放"><a href="#二、网络调试开放" class="headerlink" title="二、网络调试开放"></a>二、网络调试开放</h4><p>android/device/softwinner/dophin-common/init.sun8i.rc添加<br>on boot<br>setprop service.adb.tcp.port 5555<br>stop adbd<br>start adbd</p>
+<h4 id="三、精简系统应用"><a href="#三、精简系统应用" class="headerlink" title="三、精简系统应用"></a>三、精简系统应用</h4><p>1、android/vendor/fvd/fvd.mk(对应的特殊版本定制的应用)修改<br>      android/build/target/product/tvd_base.mk(基础版本应用)<br>      PRODUCT_PACKAGE += \<br>2、android/vendor/fvd/packages/<br>      检查各项目下Android.mk文件中的LOCAL_OVERRIDES_PACKAGES值是否覆盖了某个应用</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-system-customization/" data-id="cjcbkdhci000r0suw7uom5fpc" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/07/orangepi-pch3-source-compile/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">OrangePi-PCH3安卓源码编译</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/2017/">上一页</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-  </nav>
 </section>
         
           <aside id="sidebar">

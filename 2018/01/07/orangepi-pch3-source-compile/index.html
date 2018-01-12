@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2017 | Allen&#39;s Blog</title>
+  <title>OrangePi-PCH3安卓源码编译 | Allen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Allen&#39;s Blog">
-<meta property="og:url" content="https://chuyao.github.io/archives/2017/page/2/index.html">
+  <meta name="description" content="一、源码下载官方源码下载的源码文件是分块的压缩包，需要合并再解压linux环境合并解压1$ cat xxx_1 xx_2 &amp;gt; xx.tar.gz archive菜单直接解压xx.tar.gz 二、编译环境准备(以ubuntu1604为例)1、python2.7.32、GNU Make 3.81-3.82(ubuntu1604自带make版本4.1，需要重新安装)下载3.81版本make，解压">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OrangePi-PCH3安卓源码编译">
+<meta property="og:url" content="https://chuyao.github.io/2018/01/07/orangepi-pch3-source-compile/index.html">
 <meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="一、源码下载官方源码下载的源码文件是分块的压缩包，需要合并再解压linux环境合并解压1$ cat xxx_1 xx_2 &amp;gt; xx.tar.gz archive菜单直接解压xx.tar.gz 二、编译环境准备(以ubuntu1604为例)1、python2.7.32、GNU Make 3.81-3.82(ubuntu1604自带make版本4.1，需要重新安装)下载3.81版本make，解压">
+<meta property="og:updated_time" content="2018-01-12T06:49:12.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Allen&#39;s Blog">
+<meta name="twitter:title" content="OrangePi-PCH3安卓源码编译">
+<meta name="twitter:description" content="一、源码下载官方源码下载的源码文件是分块的压缩包，需要合并再解压linux环境合并解压1$ cat xxx_1 xx_2 &amp;gt; xx.tar.gz archive菜单直接解压xx.tar.gz 二、编译环境准备(以ubuntu1604为例)1、python2.7.32、GNU Make 3.81-3.82(ubuntu1604自带make版本4.1，需要重新安装)下载3.81版本make，解压">
   
     <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
   
@@ -67,63 +72,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/06/27/interview-in-my-mind/" class="archive-article-date">
-  <time datetime="2017-06-27T07:19:38.000Z" itemprop="datePublished">6月 27</time>
+        <section id="main"><article id="post-orangepi-pch3-source-compile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/07/orangepi-pch3-source-compile/" class="article-date">
+  <time datetime="2018-01-07T07:09:12.000Z" itemprop="datePublished">2018-01-07</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/interview-in-my-mind/">我眼中的面试 (转)</a>
+    <h1 class="article-title" itemprop="name">
+      OrangePi-PCH3安卓源码编译
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/16/tomylove/" class="archive-article-date">
-  <time datetime="2017-05-15T16:10:49.000Z" itemprop="datePublished">5月 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/tomylove/">致我的爱</a>
-    </h1>
-  
+        <h4 id="一、源码下载"><a href="#一、源码下载" class="headerlink" title="一、源码下载"></a>一、源码下载</h4><p><a href="http://www.orangepi.cn/downloadresourcescn/orangepipc/oragepipc_e3edd0dd47da54c0b8f7aa2230.html" target="_blank" rel="external">官方源码</a><br>下载的源码文件是分块的压缩包，需要合并再解压<br>linux环境合并解压<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat xxx_1 xx_2 &gt; xx.tar.gz</div></pre></td></tr></table></figure></p>
+<p>archive菜单直接解压xx.tar.gz</p>
+<h4 id="二、编译环境准备-以ubuntu1604为例"><a href="#二、编译环境准备-以ubuntu1604为例" class="headerlink" title="二、编译环境准备(以ubuntu1604为例)"></a>二、编译环境准备(以ubuntu1604为例)</h4><p>1、python2.7.3<br>2、GNU Make 3.81-3.82(ubuntu1604自带make版本4.1，需要重新安装)<br>下载<a href="http://mirrors.ustc.edu.cn/gnu/make/" target="_blank" rel="external">3.81版本make</a>，解压后得到deb包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get remove make</div><div class="line">$ sudo dpkg -i xxx.deb</div></pre></td></tr></table></figure></p>
+<p>3、JDK安装，只支持jdk1.6<br>4、平台支持软件安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git gnupg flex bison gperf build-essential zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386</div><div class="line">$ sudo ln <span class="_">-s</span> /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so</div><div class="line">$ sudo dpkg-reconfigure dash</div><div class="line">$ sudo apt-get install gawk</div><div class="line">$ sudo apt-get install u-boot-tools</div><div class="line">$ sudo apt-get install fakeroot</div></pre></td></tr></table></figure></p>
+<p>5、lichee编译(kernel)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> lichee</div><div class="line">$ ./build.sh lunch</div></pre></td></tr></table></figure></p>
+<p>选择sun8iw7p1-android-dolphin<br>6、源码编译<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> android</div><div class="line">$ <span class="built_in">source</span> ./build/envsetup.sh</div><div class="line">$ lunch dolphin_fvd_p1-eng</div><div class="line">$ extract-bsp</div><div class="line">$ make -j2</div><div class="line">$ pack</div></pre></td></tr></table></figure></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-source-compile/" data-id="cjcbkdhcb000o0suw94va891a" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/07/orangepi-pch3-system-customization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">较新的</strong>
+      <div class="article-nav-title">
+        
+          OrangePi-PCH3安卓系统定制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/17/git-usb/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">在U盘上建立git仓库，移动的“私有云”</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/2017/">上一页</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-  </nav>
 </section>
         
           <aside id="sidebar">
