@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Allen&#39;s Blog</title>
-  <subtitle>Fuck the world if you&#39;re rich. Otherwise, go fuck yourself.</subtitle>
+  <subtitle>Just writing.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuyao.github.io/"/>
@@ -228,9 +228,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -489,9 +489,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -540,9 +540,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -588,9 +588,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://chuyao.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -802,9 +802,9 @@
       <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
     
     
-      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
-    
       <category term="Interview" scheme="https://chuyao.github.io/tags/Interview/"/>
+    
+      <category term="Android" scheme="https://chuyao.github.io/tags/Android/"/>
     
   </entry>
   
