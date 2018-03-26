@@ -105,7 +105,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-system-customization/" data-id="cjejbt6qt0011twuw02vgnv7z" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-system-customization/" data-id="cjf82ivh3000xc0uwx7pp215y" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -154,7 +154,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-source-compile/" data-id="cjejbt6qn000utwuww75q1vru" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2018/01/07/orangepi-pch3-source-compile/" data-id="cjf82ivgu000tc0uwsktyt0wk" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -206,10 +206,74 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/11/17/git-usb/" data-id="cjejbt6p40002twuwapuljgpf" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/11/17/git-usb/" data-id="cjf82ivgd000mc0uwsv5fcq95" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ssr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/26/ssr/" class="article-date">
+  <time datetime="2017-10-26T07:04:49.000Z" itemprop="datePublished">2017-10-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/26/ssr/">梯子，你懂的！</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、境外服务器申请"><a href="#一、境外服务器申请" class="headerlink" title="一、境外服务器申请"></a>一、境外服务器申请</h4><p>有许多选择，任选下列其一即可，申请后的服务器请安装Linux系操作系统，如Ubuntu, Debian, CentOS</p>
+<ul>
+<li><a href="https://www.vultr.com/?ref=7295913" target="_blank" rel="external">VULTR</a> <em>推荐，目前比较便宜，支持支付宝支付，文末将示范申请过程</em></li>
+<li><a href="https://m.do.co/c/ce4e63a0ccb4" target="_blank" rel="external">DIGITALOCEAN</a> <em>大牌厂商</em></li>
+<li><a href="https://www.linode.com/" target="_blank" rel="external">LINODE</a></li>
+<li><a href="https://azure.microsoft.com" target="_blank" rel="external">AZURE</a> <em>微软的云服务</em></li>
+</ul>
+<h4 id="二、部署SSR"><a href="#二、部署SSR" class="headerlink" title="二、部署SSR"></a>二、部署SSR</h4><p>服务申请并安装好系统后，使用终端连接到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">$ chmod +x shadowsocks-all.sh</div><div class="line">$ ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
+<p>第三个命令执行时出现选项操作</p>
+<ol>
+<li>选择选项2，即输入2</li>
+<li>按提示输入一个密码，新密码，非系统登录密码</li>
+<li>按提示输入一个端口，范围1~65535，建议选择20000以上</li>
+<li>选择选项12，即chacha20</li>
+<li>选择选项3，即auth_sha1_v4</li>
+<li>选择选项2，即http_simple</li>
+</ol>
+<p>大致过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">Which Shadowsocks server you<span class="string">'d select:</span></div><div class="line">1) Shadowsocks-Python</div><div class="line">2) ShadowsocksR</div><div class="line">3) Shadowsocks-Go</div><div class="line">4) Shadowsocks-libev</div><div class="line">Please enter a number (Default Shadowsocks-Python):2</div><div class="line"></div><div class="line">You choose = ShadowsocksR</div><div class="line"></div><div class="line">Please enter password for ShadowsocksR</div><div class="line">(Default password: teddysun.com):ssr2017</div><div class="line"></div><div class="line">password = ssr2017</div><div class="line"></div><div class="line">Please enter a port for ShadowsocksR [1-65535]</div><div class="line">(Default port: 8989):20002</div><div class="line"></div><div class="line">port = 20002</div><div class="line"></div><div class="line">Please select stream cipher for ShadowsocksR:</div><div class="line">1) none</div><div class="line">2) aes-256-cfb</div><div class="line">3) aes-192-cfb</div><div class="line">4) aes-128-cfb</div><div class="line">5) aes-256-cfb8</div><div class="line">6) aes-192-cfb8</div><div class="line">7) aes-128-cfb8</div><div class="line">8) aes-256-ctr</div><div class="line">9) aes-192-ctr</div><div class="line">10) aes-128-ctr</div><div class="line">11) chacha20-ietf</div><div class="line">12) chacha20</div><div class="line">13) rc4-md5</div><div class="line">14) rc4-md5-6</div><div class="line">Which cipher you'd select(Default: aes-256-cfb):12</div><div class="line"></div><div class="line">cipher = chacha20</div><div class="line"></div><div class="line">Please select protocol <span class="keyword">for</span> ShadowsocksR:</div><div class="line">1) origin</div><div class="line">2) verify_deflate</div><div class="line">3) auth_sha1_v4</div><div class="line">4) auth_sha1_v4_compatible</div><div class="line">5) auth_aes128_md5</div><div class="line">6) auth_aes128_sha1</div><div class="line">7) auth_chain_a</div><div class="line">8) auth_chain_b</div><div class="line">Which protocol you<span class="string">'d select(Default: origin):3</span></div><div class="line"></div><div class="line">protocol = auth_sha1_v4</div><div class="line"></div><div class="line">Please select obfs for ShadowsocksR:</div><div class="line">1) plain</div><div class="line">2) http_simple</div><div class="line">3) http_simple_compatible</div><div class="line">4) http_post</div><div class="line">5) http_post_compatible</div><div class="line">6) tls1.2_ticket_auth</div><div class="line">7) tls1.2_ticket_auth_compatible</div><div class="line">8) tls1.2_ticket_fastauth</div><div class="line">9) tls1.2_ticket_fastauth_compatible</div><div class="line">Which obfs you'd select(Default: plain):2</div><div class="line"></div><div class="line">obfs = http_simple</div><div class="line"></div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>按提示按下任意键进行部署，稍等一会，最后看到如下字样则部署成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">IPv6 support</div><div class="line">Starting ShadowsocksR success</div><div class="line"></div><div class="line">Congratulations, ShadowsocksR server install completed!</div><div class="line">Your Server IP        :  169.211.20.50</div><div class="line">Your Server Port      :  20002</div><div class="line">Your Password         :  ssr2017</div><div class="line">Your Protocol         :  auth_sha1_v4</div><div class="line">Your obfs             :  http_simple</div><div class="line">Your Encryption Method:  chacha20</div><div class="line"></div><div class="line">Your QR Code: (For ShadowsocksR Windows, Android clients only)</div><div class="line"> ssr://MTY5Lja1NC4yMC41MDoyMDAwMjphdXRoX3NoYTFfdjQ6Y2hhY0hhMjA6aHR0cF9zaW1wbGU6YzNOeU1qQXhOdy8/b2Jmc3BhcmFtPQ==</div><div class="line">Your QR Code has been saved as a PNG file path:</div><div class="line"> /mnt/c/Users/xxx/shadowsocks_r_qr.png</div><div class="line"></div><div class="line">Welcome to visit: https://teddysun.com/486.html</div><div class="line">Enjoy it!</div></pre></td></tr></table></figure></p>
+<p>上边显示的也是SSR客户端连接时进行配置的参数，至此，你已经架好了自己梯子了。</p>
+<h4 id="三、配置SSR客户端"><a href="#三、配置SSR客户端" class="headerlink" title="三、配置SSR客户端"></a>三、配置SSR客户端</h4><h5 id="1、Windows系统客户端"><a href="#1、Windows系统客户端" class="headerlink" title="1、Windows系统客户端"></a>1、Windows系统客户端</h5><h5 id="2、Android系统客户端"><a href="#2、Android系统客户端" class="headerlink" title="2、Android系统客户端"></a>2、Android系统客户端</h5><h5 id="3、Mac系统客户端"><a href="#3、Mac系统客户端" class="headerlink" title="3、Mac系统客户端"></a>3、Mac系统客户端</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/10/26/ssr/" data-id="cjf82ivh50010c0uwg9lzuzx2" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li></ul>
 
     </footer>
   </div>
@@ -258,7 +322,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cjejbt6qj000rtwuw4w4osstf" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="cjf82ivic001xc0uwk2l5qnbu" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -309,7 +373,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cjejbt6qg000otwuwenzz52q1" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-1-rsa-key/" data-id="cjf82ivfl000gc0uwquihjllk" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
@@ -367,7 +431,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cjejbt6q6000htwuw4uz82i39" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/18/kotlin-android-tutorial-4/" data-id="cjf82ivfp000ic0uwcfye8cap" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -451,7 +515,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cjejbt6q1000dtwuw6okqj2jg" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="cjf82ivgl000qc0uw6gydeuk2" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -507,7 +571,7 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cjejbt6pz000btwuwt2c5r5hu" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="cjf82ivg2000kc0uwsz8r3kw8" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
@@ -559,64 +623,10 @@
     </div>
     <footer class="article-footer">
       <!--
-      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cjejbt6pu0008twuwlqt1yf81" class="article-share-link">分享</a>
+      <a data-url="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/" data-id="cjf82ivfb000ec0uwrc58tfcy" class="article-share-link">分享</a>
        -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nexus5x-bootloop-fix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/31/nexus5x-bootloop-fix/" class="article-date">
-  <time datetime="2017-07-31T06:22:18.000Z" itemprop="datePublished">2017-07-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tech/">Tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/31/nexus5x-bootloop-fix/">(译) 解决Nexus5X手机死循环启动问题，帮助你最终启动手机</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站"><a href="#原文《Nexus-5X-Bootloop-Fix-Helps-you-to-Finally-Boot-the-Phone》，原文作者：Doug-Lynch，源自-xda-developers-com网站" class="headerlink" title="原文《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》，原文作者：Doug Lynch，源自 xda-developers.com网站"></a><center><em>原文<a href="https://www.xda-developers.com/nexus-5x-bootloop-fix-boot-phone/" target="_blank" rel="external">《Nexus 5X Bootloop Fix Helps you to Finally Boot the Phone》</a>，原文作者：<a href="https://www.xda-developers.com/author/doug-lynch/" target="_blank" rel="external">Doug Lynch</a>，源自 <a href="https://www.xda-developers.com/" target="_blank" rel="external">xda-developers.com</a>网站</em></center></h5><p>&#8195;&#8195;你的LG/Google <a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>手机停止启动了吗？或者是陷入到了无休止的启动循环里了？<br>&#8195;&#8195;这种现象我们常称之为“循环启动”，起因则有很多种。大多数时候，可以通过刷入原厂固件或者恢复出厂设置来解决循环启动问题，但当遇到硬件循环启动时，通常我们并不能采取什么有效的办法，除了退货。如果你的Google Nexus 5X手机无法启动，而你尝试修复但并没有什么卵用，那么你要相信，你不是唯一一个碰到这种情况的人。Nexus 5X循环启动问题在社区里正不断被诟病，但鲜有新的解决方案。</p>
-<h3 id="Nexus-5X循环启动解决-背景"><a href="#Nexus-5X循环启动解决-背景" class="headerlink" title="Nexus 5X循环启动解决 - 背景"></a>Nexus 5X循环启动解决 - 背景</h3><p>&#8195;&#8195;过去几年里，LG旗下的智能手机在循环启动问题上有点名声。其中一个问题，起初只在<a href="https://forum.xda-developers.com/g4" target="_blank" rel="external">LG G4</a>手机上发现的问题正越来越多的出现在它发布的每一款新设备上。社区里最近在讨论<em><a href="https://www.xda-developers.com/nexus-6p-bootloop-fix/" target="_blank" rel="external">解决Nexus 6P循环启动问题</a></em>，这个设备由华为出品，而现在，一个在<a href="https://forum.xda-developers.com/nexus-5x" target="_blank" rel="external">Nexus 5X</a>上可行的办法出现了，这个办法派生自我们之前写的一些引导方案。<br>&#8195;&#8195;这些解决方案有一个共同点，正表明由高通仓促发布的骁龙808/810芯片，随着使用时间的推移，正在达到退化并损坏的时候了。<em><a href="https://www.xda-developers.com/opinion-the-810-held-back-a-generation-with-deliberate-apologism-damage-control/" target="_blank" rel="external">骁龙810发热问题</a></em>都已经老生常谈了，但是，似乎808芯片也存在相同的问题，将导致设备循环启动。LG起初承认了<em><a href="https://www.xda-developers.com/xda-external-link/lg-admits-g4-bootloop-problem-is-a-hardware-fault-will-repair-affected-devices/" target="_blank" rel="external">LG G4循环启动问题确实和硬件有关</a></em>，但从未提供更多深入的信息。<br>&#8195;&#8195;一些质疑认为是焊锡的问题，在设备的使用过程中，在经历多次的加热和冷却后，焊锡会破裂。不管是否是真因，我们还是不知道问题的背后是什么，但是这个办法看起来会对Nexus 5X循环启动的问题起效。今天我们带来一个引导，真正的帮助你解决Nexus 5X循环启动问题。这则帖子末尾的讨论链接表明这个办法是未经测试的，社区里的许多用户已经报告了用这个办法可以成功。<br>&#8195;&#8195;一如既往，你可以使这个方法多样化。</p>
-<h3 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h3><h6 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h6><ul>
-<li><em>设备在循环启动问题发生前，bootloader要处于”可解锁”状态。在这之前，如果你能启动设备，去到开发者选项里，点击“允许OEM解锁”，就能达到bootloader解锁的状态。</em></li>
-</ul>
-<ol>
-<li>下载最新的<a href="https://www.xda-developers.com/google-releases-separate-adb-and-fastboot-binary-downloads/" target="_blank" rel="external">ADB和Fastboot</a>，将它们解压到电脑上容易访问到的位置。</li></ol>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/31/nexus5x-bootloop-fix/#more">Read more</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--
-      <a data-url="https://chuyao.github.io/2017/07/31/nexus5x-bootloop-fix/" data-id="cjejbt6qa000ktwuwnassily5" class="article-share-link">分享</a>
-       -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translation/">Translation</a></li></ul>
 
     </footer>
   </div>
@@ -638,7 +648,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -648,7 +658,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -658,7 +668,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 13.33px;">Emotion</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a>
     </div>
   </div>
 
@@ -667,7 +677,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -692,11 +702,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
+            <a href="/2017/10/26/ssr/">梯子，你懂的！</a>
           </li>
         
           <li>
-            <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
           </li>
         
       </ul>

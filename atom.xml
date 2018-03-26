@@ -102,6 +102,49 @@
   </entry>
   
   <entry>
+    <title>梯子，你懂的！</title>
+    <link href="https://chuyao.github.io/2017/10/26/ssr/"/>
+    <id>https://chuyao.github.io/2017/10/26/ssr/</id>
+    <published>2017-10-26T07:04:49.000Z</published>
+    <updated>2018-03-26T10:06:17.936Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、境外服务器申请"><a href="#一、境外服务器申请" class="headerlink" title="一、境外服务器申请"></a>一、境外服务器申请</h4><p>有许多选择，任选下列其一即可，申请后的服务器请安装Linux系操作系统，如Ubuntu, Debian, CentOS</p>
+<ul>
+<li><a href="https://www.vultr.com/?ref=7295913" target="_blank" rel="external">VULTR</a> <em>推荐，目前比较便宜，支持支付宝支付，文末将示范申请过程</em></li>
+<li><a href="https://m.do.co/c/ce4e63a0ccb4" target="_blank" rel="external">DIGITALOCEAN</a> <em>大牌厂商</em></li>
+<li><a href="https://www.linode.com/" target="_blank" rel="external">LINODE</a></li>
+<li><a href="https://azure.microsoft.com" target="_blank" rel="external">AZURE</a> <em>微软的云服务</em></li>
+</ul>
+<h4 id="二、部署SSR"><a href="#二、部署SSR" class="headerlink" title="二、部署SSR"></a>二、部署SSR</h4><p>服务申请并安装好系统后，使用终端连接到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">$ chmod +x shadowsocks-all.sh</div><div class="line">$ ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
+<p>第三个命令执行时出现选项操作</p>
+<ol>
+<li>选择选项2，即输入2</li>
+<li>按提示输入一个密码，新密码，非系统登录密码</li>
+<li>按提示输入一个端口，范围1~65535，建议选择20000以上</li>
+<li>选择选项12，即chacha20</li>
+<li>选择选项3，即auth_sha1_v4</li>
+<li>选择选项2，即http_simple</li>
+</ol>
+<p>大致过程如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">Which Shadowsocks server you<span class="string">'d select:</span></div><div class="line">1) Shadowsocks-Python</div><div class="line">2) ShadowsocksR</div><div class="line">3) Shadowsocks-Go</div><div class="line">4) Shadowsocks-libev</div><div class="line">Please enter a number (Default Shadowsocks-Python):2</div><div class="line"></div><div class="line">You choose = ShadowsocksR</div><div class="line"></div><div class="line">Please enter password for ShadowsocksR</div><div class="line">(Default password: teddysun.com):ssr2017</div><div class="line"></div><div class="line">password = ssr2017</div><div class="line"></div><div class="line">Please enter a port for ShadowsocksR [1-65535]</div><div class="line">(Default port: 8989):20002</div><div class="line"></div><div class="line">port = 20002</div><div class="line"></div><div class="line">Please select stream cipher for ShadowsocksR:</div><div class="line">1) none</div><div class="line">2) aes-256-cfb</div><div class="line">3) aes-192-cfb</div><div class="line">4) aes-128-cfb</div><div class="line">5) aes-256-cfb8</div><div class="line">6) aes-192-cfb8</div><div class="line">7) aes-128-cfb8</div><div class="line">8) aes-256-ctr</div><div class="line">9) aes-192-ctr</div><div class="line">10) aes-128-ctr</div><div class="line">11) chacha20-ietf</div><div class="line">12) chacha20</div><div class="line">13) rc4-md5</div><div class="line">14) rc4-md5-6</div><div class="line">Which cipher you'd select(Default: aes-256-cfb):12</div><div class="line"></div><div class="line">cipher = chacha20</div><div class="line"></div><div class="line">Please select protocol <span class="keyword">for</span> ShadowsocksR:</div><div class="line">1) origin</div><div class="line">2) verify_deflate</div><div class="line">3) auth_sha1_v4</div><div class="line">4) auth_sha1_v4_compatible</div><div class="line">5) auth_aes128_md5</div><div class="line">6) auth_aes128_sha1</div><div class="line">7) auth_chain_a</div><div class="line">8) auth_chain_b</div><div class="line">Which protocol you<span class="string">'d select(Default: origin):3</span></div><div class="line"></div><div class="line">protocol = auth_sha1_v4</div><div class="line"></div><div class="line">Please select obfs for ShadowsocksR:</div><div class="line">1) plain</div><div class="line">2) http_simple</div><div class="line">3) http_simple_compatible</div><div class="line">4) http_post</div><div class="line">5) http_post_compatible</div><div class="line">6) tls1.2_ticket_auth</div><div class="line">7) tls1.2_ticket_auth_compatible</div><div class="line">8) tls1.2_ticket_fastauth</div><div class="line">9) tls1.2_ticket_fastauth_compatible</div><div class="line">Which obfs you'd select(Default: plain):2</div><div class="line"></div><div class="line">obfs = http_simple</div><div class="line"></div><div class="line"></div><div class="line">Press any key to start...or Press Ctrl+C to cancel</div></pre></td></tr></table></figure>
+<p>按提示按下任意键进行部署，稍等一会，最后看到如下字样则部署成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">IPv6 support</div><div class="line">Starting ShadowsocksR success</div><div class="line"></div><div class="line">Congratulations, ShadowsocksR server install completed!</div><div class="line">Your Server IP        :  169.211.20.50</div><div class="line">Your Server Port      :  20002</div><div class="line">Your Password         :  ssr2017</div><div class="line">Your Protocol         :  auth_sha1_v4</div><div class="line">Your obfs             :  http_simple</div><div class="line">Your Encryption Method:  chacha20</div><div class="line"></div><div class="line">Your QR Code: (For ShadowsocksR Windows, Android clients only)</div><div class="line"> ssr://MTY5Lja1NC4yMC41MDoyMDAwMjphdXRoX3NoYTFfdjQ6Y2hhY0hhMjA6aHR0cF9zaW1wbGU6YzNOeU1qQXhOdy8/b2Jmc3BhcmFtPQ==</div><div class="line">Your QR Code has been saved as a PNG file path:</div><div class="line"> /mnt/c/Users/xxx/shadowsocks_r_qr.png</div><div class="line"></div><div class="line">Welcome to visit: https://teddysun.com/486.html</div><div class="line">Enjoy it!</div></pre></td></tr></table></figure></p>
+<p>上边显示的也是SSR客户端连接时进行配置的参数，至此，你已经架好了自己梯子了。</p>
+<h4 id="三、配置SSR客户端"><a href="#三、配置SSR客户端" class="headerlink" title="三、配置SSR客户端"></a>三、配置SSR客户端</h4><h5 id="1、Windows系统客户端"><a href="#1、Windows系统客户端" class="headerlink" title="1、Windows系统客户端"></a>1、Windows系统客户端</h5><h5 id="2、Android系统客户端"><a href="#2、Android系统客户端" class="headerlink" title="2、Android系统客户端"></a>2、Android系统客户端</h5><h5 id="3、Mac系统客户端"><a href="#3、Mac系统客户端" class="headerlink" title="3、Mac系统客户端"></a>3、Mac系统客户端</h5>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、境外服务器申请&quot;&gt;&lt;a href=&quot;#一、境外服务器申请&quot; class=&quot;headerlink&quot; title=&quot;一、境外服务器申请&quot;&gt;&lt;/a&gt;一、境外服务器申请&lt;/h4&gt;&lt;p&gt;有许多选择，任选下列其一即可，申请后的服务器请安装Linux系操作系统，如Ubunt
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://chuyao.github.io/categories/Tech/"/>
+    
+    
+      <category term="ssr" scheme="https://chuyao.github.io/tags/ssr/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenSSL基础教程二：RSA命令行加解密</title>
     <link href="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/"/>
     <id>https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/</id>
