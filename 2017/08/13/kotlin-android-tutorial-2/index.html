@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Kotlin基础教程第二章：Kotlin变量 (Android) | Allen&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta name="keywords" content="Android,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin基础教程第二章：Kotlin变量 (Android)">
+<meta property="og:url" content="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/index.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/3.png">
+<meta property="og:updated_time" content="2021-05-26T05:06:13.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin基础教程第二章：Kotlin变量 (Android)">
+<meta name="twitter:description" content="&amp;#8195;&amp;#8195;这篇文章，你将学习到Kotlin变量的相关知识。&amp;#8195;&amp;#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。 在Android Studio上配置Kotlin开发环境变量的定义&amp;#8195;&amp;#8195;在Kotlin中，一切都是对象">
+<meta name="twitter:image" content="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Allen&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Just writing.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!--
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chuyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-kotlin-android-tutorial-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/13/kotlin-android-tutorial-2/" class="article-date">
+  <time datetime="2017-08-13T09:31:07.000Z" itemprop="datePublished">2017-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kotlin基础教程第二章：Kotlin变量 (Android)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#8195;&#8195;这篇文章，你将学习到Kotlin变量的相关知识。<br>&#8195;&#8195;在进入今天的主题之前，在上一篇文章，我已经解释了如何在Android Studio中配置Kotlin开发环境，如果对此你还有疑虑，在学习今天的知识前，请先阅读上一篇文章。</p>
+<h5 id="在Android-Studio上配置Kotlin开发环境"><a href="#在Android-Studio上配置Kotlin开发环境" class="headerlink" title="在Android Studio上配置Kotlin开发环境"></a><em><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">在Android Studio上配置Kotlin开发环境</a></em></h5><h4 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h4><p>&#8195;&#8195;在Kotlin中，<em>一切都是对象</em></p>
+<blockquote>
+<p>在Kotlin中，一切都是对象。这里没有我们在Java中使用的原始数据类型。这真的是很有意思，因为对于所有的变量，我们都可以使用同样的方式来对待。–<a href="https://antonioleiva.com/about/" target="_blank" rel="noopener">安东尼奥.雷瓦</a></p>
+</blockquote>
+<p>&#8195;&#8195;是的，这是真的，这是Kotlin非常酷炫的地方，而原因，“安东尼奥.雷瓦”已经说过了。让我们来定义第一个变量。</p>
+<h4 id="定义第一个变量"><a href="#定义第一个变量" class="headerlink" title="定义第一个变量"></a>定义第一个变量</h4><p>&#8195;&#8195;你可以使用<em>var</em>或<em>val</em>关键字简单的定义变量并指派给对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</span><br><span class="line"><span class="keyword">val</span> &lt;object_name&gt; : &lt;Type&gt; = &lt;Value&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i : <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> d : <span class="built_in">Double</span> = <span class="number">1.1</span></span><br><span class="line"><span class="keyword">var</span> f : <span class="built_in">Float</span> = <span class="number">1.1F</span></span><br><span class="line"><span class="keyword">var</span> l : <span class="built_in">Long</span> = <span class="number">1L</span></span><br><span class="line"><span class="keyword">var</span> c : <span class="built_in">Char</span> = <span class="string">'c'</span></span><br><span class="line"><span class="keyword">var</span> s : String = <span class="string">"Allen"</span></span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;上边的例子将立即对对象进行赋值，通过例子，你可有什么发现？<a id="more"></a><br>&#8195;&#8195;没有？<br>&#8195;&#8195;分号！<br>&#8195;&#8195;你可以更简单一点，就像下边这样<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="number">1.1</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="number">1.1F</span></span><br><span class="line"><span class="keyword">var</span> l = <span class="number">1L</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="string">'c'</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">"Allen"</span></span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;通过不同的赋值，变量将被创建为特殊的某一类型。很有趣，是吗！<br>&#8195;&#8195;下边表格列出的是你定义的对象类型在内存中的占用情况(比特位数)</p>
+<p><img src="/2017/08/13/kotlin-android-tutorial-2/3.png" alt="类型位宽"><br>&#8195;&#8195;你也可以用任何一个已定义的变量并把它赋值给一个新的变量来创建一个对象。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ii = i + <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> dd = d + <span class="number">2.0</span></span><br><span class="line"><span class="keyword">var</span> ff = f + <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> ll = l + <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> ss = s + <span class="string">" Shi"</span></span><br><span class="line"></span><br><span class="line">println(<span class="string">"ii : <span class="variable">$ii</span>, dd : <span class="variable">$dd</span>, ff : <span class="variable">$ff</span>, ll : <span class="variable">$ll</span>, ss : <span class="variable">$ss</span>"</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ii : <span class="number">2</span></span><br><span class="line">dd : <span class="number">3.1</span></span><br><span class="line">ff : <span class="number">2.1</span></span><br><span class="line">ll : <span class="number">2</span></span><br><span class="line">ss : Allen Shi</span><br></pre></td></tr></table></figure>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>&#8195;&#8195;在Kotlin中，<em>var</em>变量很常见，它是可变的，可以被多次赋值。而<em>val</em>则指常量，即，它只能被初始化一次。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mutable : <span class="built_in">Int</span> = <span class="number">5</span></span><br><span class="line"><span class="keyword">val</span> immutable : <span class="built_in">Int</span> = <span class="number">5</span></span><br><span class="line">mutable = <span class="number">10</span>    <span class="comment">//合法</span></span><br><span class="line">immutable = <span class="number">10</span>  <span class="comment">//非法</span></span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;在Java中，我们常不知不觉使用可变量实例，这让我们经常面对对象在多个地方修改带来的许多问题。当我们创建一个不可变对象时，它可以一直保持它原有的状态，如果我们想要改变它，则需要创建另外一个对象。<br>&#8195;&#8195;在使用Kotlin开发应用时，建议尽量多使用<em>val</em>变量。它们不受当前线程影响，因而它们是线程安全的。</p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>&#8195;&#8195;这对Kotlin来说太简单了。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"Allen"</span></span><br><span class="line"><span class="keyword">var</span> ss = <span class="string">"My name is <span class="variable">$s</span>"</span>  <span class="comment">// My name is Allen</span></span><br><span class="line"><span class="keyword">var</span> c = s[<span class="number">2</span>]              <span class="comment">// c将赋值为字符'i'</span></span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;使用<em>$</em>(美元符号)，可以引用一个对象的值。你也可以把一个字符串看待成一个数组，通过给某一个数组元素赋值来改变这个对象。</p>
+<h4 id="安全的空指针"><a href="#安全的空指针" class="headerlink" title="安全的空指针"></a>安全的空指针</h4><p>&#8195;&#8195;在以前的文章里，我说过Kotlin是空指针安全的。原因是Kotlin不允许用户将对象赋值<em>NULL</em>，除非你告诉Kotlin某个对象可能是空的才允许你那么做。你可以在类型后面加一个<em>?</em>(问号)来实现。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s : String = <span class="string">"Allen"</span></span><br><span class="line">s = <span class="literal">null</span> <span class="comment">//异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s : String? = <span class="string">"Allen"</span></span><br><span class="line">s = <span class="literal">null</span> <span class="comment">//正确</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>&#8195;&#8195;和Java不同，Kotlin没有自动类型转换，你需要自己声明你需要的转换类型。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i : <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">val</span> d : <span class="built_in">Double</span> = i              <span class="comment">//不可以</span></span><br><span class="line"><span class="keyword">val</span> d : <span class="built_in">Double</span> = i.toDouble()   <span class="comment">//可以</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&#8195;&#8195;在本文中，你将学习到如何定义不同类型的变量，<em>var</em>和<em>val</em>关键字的区别，如何从一个类型变量转换到另一个类型的变量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/" data-id="ckp50no7y000jnwvb32mnkt40" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/15/kotlin-android-tutorial-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">较新的</strong>
+      <div class="article-nav-title">
+        
+          Kotlin基础教程第三章：Kotlin运算符 (Android)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/10/kotlin-android-tutorial-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">Kotlin基础教程第一章：在Android Studio中配置Kotlin环境</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 10px;">Emotion</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-system-customization/">OrangePi-PCH3安卓系统定制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-source-compile/">OrangePi-PCH3安卓源码编译</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/git-usb/">在U盘上建立git仓库，移动的“私有云”</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+
+        <div class="outer">
+          <div id="footer-info" class="inner">
+            &copy;
+            2021
+              Allen Shi<br>
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+                  <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><span id="busuanzi_value_site_uv"></span>
+                  </span>
+                  </span>
+                  <span> | </span>
+                  <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><span id="busuanzi_value_page_pv"></span>
+                  </span>
+                  </span>
+          </div>
+        </div>
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>

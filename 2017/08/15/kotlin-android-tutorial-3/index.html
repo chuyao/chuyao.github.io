@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Kotlin基础教程第三章：Kotlin运算符 (Android) | Allen&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
+<meta name="keywords" content="Android,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin基础教程第三章：Kotlin运算符 (Android)">
+<meta property="og:url" content="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/index.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-05-26T05:06:13.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin基础教程第三章：Kotlin运算符 (Android)">
+<meta name="twitter:description" content="&amp;#8195;&amp;#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。&amp;#8195;&amp;#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。 第一章：在Android Studio中配置Kotlin环境第二章：Kotli">
+  
+    <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Allen&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Just writing.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!--
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chuyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-kotlin-android-tutorial-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/15/kotlin-android-tutorial-3/" class="article-date">
+  <time datetime="2017-08-15T13:55:47.000Z" itemprop="datePublished">2017-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kotlin基础教程第三章：Kotlin运算符 (Android)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#8195;&#8195;在这篇文章里，你将学习到运算符知识及它们在Kotlin中的运用。<br>&#8195;&#8195;但是在进入正题之前，我已经在之前的文章里解释了如何在Android Studio中配置Kotlin开发环境及Kotlin语言变量。如果你还有不清楚的地方，请先阅读之前的文章再来进行这篇文章知识的学习。</p>
+<h5 id="第一章：在Android-Studio中配置Kotlin环境"><a href="#第一章：在Android-Studio中配置Kotlin环境" class="headerlink" title="第一章：在Android Studio中配置Kotlin环境"></a><a href="https://chuyao.github.io/2017/08/10/kotlin-android-tutorial-1/">第一章：在Android Studio中配置Kotlin环境</a></h5><h5 id="第二章：Kotlin变量-Android"><a href="#第二章：Kotlin变量-Android" class="headerlink" title="第二章：Kotlin变量 (Android)"></a><a href="https://chuyao.github.io/2017/08/13/kotlin-android-tutorial-2/">第二章：Kotlin变量 (Android)</a></h5><h4 id="二进制运算符"><a href="#二进制运算符" class="headerlink" title="二进制运算符"></a>二进制运算符</h4><p>&#8195;&#8195;在运算符的使用上，Kotlin是一门强大的语言。在其它计算机语言如Java中，是不允许用户在非原始类型数据间使用算术运算符的。你想对ArrayList使用“<em>+</em>”，是不允许的。但Kotlin可以，Kotlin提供了二进制运算符相对应的可重载的方法名。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a + b</td>
+<td style="text-align:left">a.plus(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a - b</td>
+<td style="text-align:left">a.minus(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a * b</td>
+<td style="text-align:left">a.times(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a / b</td>
+<td style="text-align:left">a.div(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a % b</td>
+<td style="text-align:left">a.rem(b), a.mod(b)(过时的)</td>
+</tr>
+<tr>
+<td style="text-align:left">a..b</td>
+<td style="text-align:left">a.rangeTo(b)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>&#8195;&#8195;如果你正在使用的Kotlin是1.1版本，请使用<em>rem()</em>方法，<em>mod()</em>方法从1.1版本开始已经过时了。<br>&#8195;&#8195;如你所见，每一个二进制运算符都有一个方法让它更易读。当你想对自定义的类使用运算方法时，你会感觉很容易使用以及重载。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(increment: <span class="type">Int</span>)</span></span>: Test &#123;</span><br><span class="line">        <span class="keyword">return</span> Test(count + increment)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">times</span><span class="params">(multiply: <span class="type">Int</span>)</span></span>: Test &#123;</span><br><span class="line">        <span class="keyword">return</span> Test(count + multiply)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</span><br><span class="line">println(test + <span class="number">10</span>)  <span class="comment">//输出 -&gt; Test(count=20)</span></span><br><span class="line">println(test * <span class="number">2</span>)   <span class="comment">//输出 -&gt; Test(count=12)</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>阴吹斯汀！</p>
+<h4 id="一元运算"><a href="#一元运算" class="headerlink" title="一元运算"></a>一元运算</h4><p>&#8195;&#8195;在Java或其它语言中，你一定很熟悉一元运算符。在Kotlin中，只要你愿意，你也可以在自定义类中使用和重载它们。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">+a</td>
+<td style="text-align:left">a.unaryPlus()</td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">a.unaryMinus()</td>
+</tr>
+<tr>
+<td style="text-align:left">!a</td>
+<td style="text-align:left">a.not()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>(<span class="keyword">val</span> count: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Test.<span class="title">unaryMinus</span><span class="params">()</span></span> = Test(-count)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> test = Test(<span class="number">10</span>)</span><br><span class="line">println(-test)       <span class="comment">//输出 -&gt; Test(count=-10)</span></span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;可以看到，一元方法是没有参数的。当<em>-test</em>被调用时，它会检查<em>unaryMinus()</em>是否已经被重载，如果是，就会返回适当的结果。</p>
+<h4 id="自增和自减"><a href="#自增和自减" class="headerlink" title="自增和自减"></a>自增和自减</h4><p>&#8195;&#8195;没有这个运算符，你的循环是不完整的。是的，<em>++</em>和<em>–</em>是非常有用的运算符，接着看表和重载方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a++</td>
+<td style="text-align:left">a.inc()</td>
+</tr>
+<tr>
+<td style="text-align:left">a–</td>
+<td style="text-align:left">a.dec()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> BigDecimal.<span class="title">inc</span><span class="params">()</span></span> = <span class="keyword">this</span> + BigDecimal.ONE</span><br><span class="line"><span class="keyword">var</span> bigDec = BigDecimal.ZERO</span><br><span class="line">println(bigDec++)  <span class="comment">//输出 -&gt; 0</span></span><br><span class="line">println(++bigDec)  <span class="comment">//输出 -&gt; 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>&#8195;&#8195;使用赋值运算符，你通过操作二进制运算符来改变对象的值。当使用简单的二进制运算符时，对象的值不会被改变。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a += b</td>
+<td style="text-align:left">a.plusAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a -= b</td>
+<td style="text-align:left">a.minusAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a *= b</td>
+<td style="text-align:left">a.timesAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a /= b</td>
+<td style="text-align:left">a.divAssign(b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a %= b</td>
+<td style="text-align:left">a.modAssign(b)</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> mutableCollection = mutableListOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">val</span> iterable = listOf(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">mutableCollection.plusAssign(iterable)</span><br><span class="line">println(mutableCollection)  <span class="comment">//输出 -&gt; [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">mutableCollection += <span class="number">6</span></span><br><span class="line">println(mutableCollection)  <span class="comment">//输出 -&gt; [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<h4 id="其它运算符"><a href="#其它运算符" class="headerlink" title="其它运算符"></a>其它运算符</h4><p>&#8195;&#8195;还有许多其它的运算符可以使用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表达式</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">a in b</td>
+<td style="text-align:left">b.contains(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">a !in b</td>
+<td style="text-align:left">!b.contains(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i]</td>
+<td style="text-align:left">a.get(i)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i, j]</td>
+<td style="text-align:left">a.get(i, j)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i_1, …, i_n]</td>
+<td style="text-align:left">a.get(i_1, …, i_n)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i] = b</td>
+<td style="text-align:left">a.set(i, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i, j] = b</td>
+<td style="text-align:left">a.set(i, j, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a[i_1, …, i_n] = b</td>
+<td style="text-align:left">a.set(i_1, …, i_n, b)</td>
+</tr>
+<tr>
+<td style="text-align:left">a == b</td>
+<td style="text-align:left">a?.equals(b) ?: (b === null)</td>
+</tr>
+<tr>
+<td style="text-align:left">a != b</td>
+<td style="text-align:left">!(a?.equals(b) ?: (b === null))</td>
+</tr>
+<tr>
+<td style="text-align:left">a()</td>
+<td style="text-align:left">a.invoke()</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i)</td>
+<td style="text-align:left">a.invoke(i)</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i, j)</td>
+<td style="text-align:left">a.invoke(i, j)</td>
+</tr>
+<tr>
+<td style="text-align:left">a(i_1, …, i_n)</td>
+<td style="text-align:left">a.invoke(i_1, …, i_n)</td>
+</tr>
+<tr>
+<td style="text-align:left">a &gt; b</td>
+<td style="text-align:left">a.compareTo(b) &gt; 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &lt; b</td>
+<td style="text-align:left">a.compareTo(b) &lt; 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &gt;= b</td>
+<td style="text-align:left">a.compareTo(b) &gt;= 0</td>
+</tr>
+<tr>
+<td style="text-align:left">a &lt;= b</td>
+<td style="text-align:left">a.compareTo(b) &lt;= 0</td>
+</tr>
+</tbody>
+</table>
+<p>&#8195;&#8195;尝试在你自己的例子中使用上面的运算符，分享一下你的经历。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&#8195;&#8195;在本文中，你已经学习了如何在原始类型数据或自定义类之间使用运算符并重载相应的方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/08/15/kotlin-android-tutorial-3/" data-id="ckp50no81000mnwvblolgtct8" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/18/kotlin-android-tutorial-4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">较新的</strong>
+      <div class="article-nav-title">
+        
+          Kotlin基础教程第四章：Kotlin类 (Android)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/13/kotlin-android-tutorial-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">Kotlin基础教程第二章：Kotlin变量 (Android)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 10px;">Emotion</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-system-customization/">OrangePi-PCH3安卓系统定制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-source-compile/">OrangePi-PCH3安卓源码编译</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/git-usb/">在U盘上建立git仓库，移动的“私有云”</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+
+        <div class="outer">
+          <div id="footer-info" class="inner">
+            &copy;
+            2021
+              Allen Shi<br>
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+                  <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><span id="busuanzi_value_site_uv"></span>
+                  </span>
+                  </span>
+                  <span> | </span>
+                  <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><span id="busuanzi_value_page_pv"></span>
+                  </span>
+                  </span>
+          </div>
+        </div>
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>

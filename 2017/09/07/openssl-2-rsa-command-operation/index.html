@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>OpenSSL基础教程二：RSA命令行加解密 | Allen&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、概述&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。 二、公钥加密&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加">
+<meta name="keywords" content="OpenSSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenSSL基础教程二：RSA命令行加解密">
+<meta property="og:url" content="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/index.html">
+<meta property="og:site_name" content="Allen&#39;s Blog">
+<meta property="og:description" content="一、概述&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。 二、公钥加密&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-05-26T05:06:13.963Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenSSL基础教程二：RSA命令行加解密">
+<meta name="twitter:description" content="一、概述&amp;#8195;&amp;#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。 二、公钥加密&amp;#8195;&amp;#8195;公钥私钥是成对出现，一个加">
+  
+    <link rel="alternate" href="/atom.xml" title="Allen&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Allen&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Just writing.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!--
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        -->
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chuyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-openssl-2-rsa-command-operation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/07/openssl-2-rsa-command-operation/" class="article-date">
+  <time datetime="2017-09-07T08:44:07.000Z" itemprop="datePublished">2017-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OpenSSL基础教程二：RSA命令行加解密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>&#8195;&#8195;在上一篇教程中，讲解了如何生成RSA密钥，提到了密钥长度设定对加密过程的影响问题。本篇文章，让我们来使用RSA密钥对数据进行加解密，并验证一下密钥长度对加密的影响，依赖于OpenSSL强大而丰富的命令行命令，可以简洁清晰的实现这两个目标。为了方便演示讲解，本文中使用的密钥是默认的512比特长度。</p>
+<h4 id="二、公钥加密"><a href="#二、公钥加密" class="headerlink" title="二、公钥加密"></a>二、公钥加密</h4><p>&#8195;&#8195;公钥私钥是成对出现，一个加密，另一个解密。当然，数据也可以由私钥加密，由公钥解密。所谓公钥，即对外公开的，公钥由私钥生成而来，知道私钥即可知道公钥，在RSA的设计设想中，这是一条单向线，因此，要自己保护好私钥，把公钥公开，一般情况下，公钥持有者用公钥把明文数据加密成密文，将密文发送给私钥持有者，私钥持有者用私钥对密文解密得到明文数据，完成加解密流程。本文的演示流程也将按照这个来进行。<br>&#8195;&#8195;新建一个空白文档文件 <em>data.txt</em>，用文本编辑器编辑文本内容，输入 <em>Hello RSA</em> 并保存，作为我们的明文数据。<br>&#8195;&#8195;公钥加密，命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rsautl -encrypt -<span class="keyword">in</span> data.txt -inkey public.key -pubin -out data_en.txt</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>意思是：RSA工具(rsautl)加密操作(-encrypt)，导入(-in)明文数据data.txt，导入密钥(-inkey)，声明密钥是公钥(-pubin)，加密后密文输出保存到(-out)data_en.txt文件中。</li>
+<li>加密时，OpenSSL会默认导入的密钥是私钥，所以，公钥加密需要加上 <em>-pubin</em> 参数以表明加密操作是以公钥进行，私钥加密时因为是默认私钥，所以不需要加相关参数。一定要确认使用的是哪个密钥加密，如果使用公钥而又不加 <em>-pubin</em> 参数，命令行会报错，加密也会失败。<a id="more"></a>
+&#8195;&#8195;命令行无错误提示，即表明加密成功，来看看密文文件 <em>data_en.txt</em> 的内容：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat data_en.txt</span><br><span class="line">�W��</span><br><span class="line">����	u+�E�=J�w��	���� �n(W˯f�g<span class="string">'n�&lt;grHY����w�=jI�)M�.i</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#8195;&#8195;我当然看不懂了！<br>&#8195;&#8195;同样的加密操作我们再来一次，看看两次加密得到的密文是否一样。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rsautl -encrypt -<span class="keyword">in</span> data.txt -inkey public.key -pubin -out data_en.txt</span><br><span class="line">$ cat data_en.txt</span><br><span class="line">��ީ�q�%EM����vBe)P~�����ϙ��ZԱ[ޥb�9~����Ө|�=�R��c�[��</span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;我当然依然看不懂了，但明显，两次加密生成密文是不一样的，这也是RSA加密算法的重点优势体现，密文是动态的，安全性得到了提升。</p>
+<h4 id="三、私钥解密"><a href="#三、私钥解密" class="headerlink" title="三、私钥解密"></a>三、私钥解密</h4><p>&#8195;&#8195;前面我们已经得到了密文数据文件 <em>data_en.txt</em>，我们来使用私钥进行解密还原。命令行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rsautl -decrypt -<span class="keyword">in</span> data_en.txt -inkey private.key -out data_de.txt</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>意思应该已经很好理解了：RSA工具解密操作(-decrypt)，导入密文数据文件data_en.txt，导入私钥private.key，默认密钥为私钥，解密后明文数据输出保存到 data_de.txt文件中。</li>
+</ul>
+<p>&#8195;&#8195;命令行无错误提示，即表明解密成功，来看看明文文件 <em>data_de.txt</em> 的内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat data_de.txt</span><br><span class="line">Hello RSA</span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;好了，是不是很有成就感？！</p>
+<h4 id="四、密钥长度问题验证"><a href="#四、密钥长度问题验证" class="headerlink" title="四、密钥长度问题验证"></a>四、密钥长度问题验证</h4><p>&#8195;&#8195;先来看看我们经过加解密过程得到的三个文件的大小<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ll data.txt</span><br><span class="line">-rw-r--r-- 1 user 197121 10 Sep   7 15:20 data.txt</span><br><span class="line">$ ll data_en.txt</span><br><span class="line">-rw-r--r-- 1 user 197121 64 Sep   7 15:20 data_en.txt</span><br><span class="line">$ ll data_de.txt</span><br><span class="line">-rw-r--r-- 1 user 197121 10 Sep   7 15:21 data_de.txt</span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;data.txt是10个字节，data_en.txt是64个字节，还原的的data_de.txt是10个字节，符合我们下面进行的公式计算。<br>&#8195;&#8195;以512比特长度的密钥用公式计算，<em>512/8 = 64</em>，即经过这个密钥加密后的密文长度(亦或大小)固定是64个字节，可加密的最大明文数据大小为 <em>512/8 - 11 = 53</em> 个字节，一个英文字母即一个字节。我们来验证一下，编辑data.txt，把 <em>Hello RSA</em> 替换为 <em>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</em>，保存后可以查看data.txt的大小，刚好53个字节。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ll data.txt</span><br><span class="line">-rw-r--r-- 1 user 197121 53 Sep   7 15:32 data.txt</span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;对这个文件执行公钥加密操作，可以看到，是成功的，我们再来编辑这个文件，随意插入一个字母，保存，data.txt大小将变为54字节，再进行一次公钥加密操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rsautl -encrypt -<span class="keyword">in</span> data.txt -inkey public.key -pubin -out data_en.txt</span><br><span class="line">RSA operation error</span><br><span class="line">139970621331096:error:0406D06E:rsa routines:RSA_padding_add_PKCS1_type_2:data too large <span class="keyword">for</span> key size:rsa_pk1.c:153:</span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;可见，加密失败，因为明文数据长度超过53字节了。要想对这么长的数据进行RSA加密，我们需要一个更大容量的密钥，留个作业，动手去生成一个1024比特长度密钥，来加密一个54字节长度的明文数据，验证一下，可以加深你对这个问题的理解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--
+      <a data-url="https://chuyao.github.io/2017/09/07/openssl-2-rsa-command-operation/" data-id="ckp50no8c000vnwvbrgeg8yz5" class="article-share-link">分享</a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/17/git-usb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">较新的</strong>
+      <div class="article-nav-title">
+        
+          在U盘上建立git仓库，移动的“私有云”
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/07/openssl-1-rsa-key/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">以前的</strong>
+      <div class="article-nav-title">OpenSSL基础教程一：RSA加解密算法密钥</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Emotion/">Emotion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nexus-5X/">Nexus 5X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Translation/">Translation</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Emotion/" style="font-size: 10px;">Emotion</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/Nexus-5X/" style="font-size: 10px;">Nexus 5X</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/OpenSSL/" style="font-size: 13.33px;">OpenSSL</a> <a href="/tags/Translation/" style="font-size: 10px;">Translation</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-system-customization/">OrangePi-PCH3安卓系统定制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/07/orangepi-pch3-source-compile/">OrangePi-PCH3安卓源码编译</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/git-usb/">在U盘上建立git仓库，移动的“私有云”</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-2-rsa-command-operation/">OpenSSL基础教程二：RSA命令行加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/openssl-1-rsa-key/">OpenSSL基础教程一：RSA加解密算法密钥</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+
+        <div class="outer">
+          <div id="footer-info" class="inner">
+            &copy;
+            2021
+              Allen Shi<br>
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+                  <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><span id="busuanzi_value_site_uv"></span>
+                  </span>
+                  </span>
+                  <span> | </span>
+                  <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><span id="busuanzi_value_page_pv"></span>
+                  </span>
+                  </span>
+          </div>
+        </div>
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>
